@@ -1,3 +1,19 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",
+        "prettier",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:storybook/recommended"
+    ],
+    "overrides": [
+    {
+      "files": ["jest.config.js"],
+      "rules": {
+        "@typescript-eslint/no-require-imports": "off",
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }
