@@ -2,6 +2,6 @@
 
 export default function Home() {
   return (
-    <div>안녕하세요 테스트입니다.</div>
+    <div>디벨롭 브랜치 생성</div>
   );
 }
