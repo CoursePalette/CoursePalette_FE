@@ -92,18 +92,18 @@ const authOptions: NextAuthOptions = {
       return session;
     }
   },
-  
+  jwt: {
+    
+    maxAge: 60 * 60 * 10, // JWT 토큰 만료 시간 (10시간)
+  },
+  session: {
+    //클라이언트의 세션 쿠키 유지되는 기간 설정
+    maxAge: 60 * 60 * 10, // 세션 쿠키 만료 시간 (10시간)
 
-
-
-  // JWT 토큰 만료 시간 등 설정
-  // jwt: {
-  //   maxAge: 60 * 60, // 1시간
-  // },
-  // session: {
-  //   // strategy: 'jwt',
-  //   maxAge: 60 * 60, // 1시간
-  // },
+    // 사용자가 활동할 때마다 세션 만료 시간을 갱신하는 주기를 설정
+    // 사용자가 매 시간 활동하면 세션이 계속 연장
+    updateAge: 60 * 60, // 세션 갱신 주기 (1시간) 
+  },
 
 
 
