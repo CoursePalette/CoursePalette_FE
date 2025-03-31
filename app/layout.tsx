@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <head></head>
-      <body className='w-screen h-screen'>
+      <body className='w-screen h-screen overflow-x-hidden'>
         <Script src={KAKAO_MAP_SRC} strategy='beforeInteractive' />
         <Providers>{children}</Providers>
       </body>

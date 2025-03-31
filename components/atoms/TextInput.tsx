@@ -7,7 +7,7 @@ export interface TextInputProps {
   infoText: string;
   placeholder: string;
   value: string;
-  setValue: (value:string) => void;
+  setValue: (value: string) => void;
   labelClassName?: string;
   inputClassName?: string;
 }
@@ -22,7 +22,10 @@ export default function TextInput({
 }: TextInputProps) {
   return (
     <>
-      <Label htmlFor='text' className={clsx('font-semibold text-[20px]', labelClassName)}>
+      <Label
+        htmlFor='text'
+        className={clsx('font-semibold text-[20px]', labelClassName)}
+      >
         {infoText}
       </Label>
       <Input

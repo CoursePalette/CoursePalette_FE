@@ -1,9 +1,13 @@
 import clsx from 'clsx';
+
 import { Label } from '../ui/label';
 import {
-  Select, SelectTrigger, SelectValue, SelectContent, SelectItem
-} from "../ui/select"
-
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
 
 export interface CategorySelectProps {
   infoText: string;
@@ -14,23 +18,29 @@ export interface CategorySelectProps {
   selectClassName?: string;
 }
 
-export default function CategorySelect(
-  {infoText, placeholder,category, setCategory, labelClassName, selectClassName} :
-  CategorySelectProps
-) {
-
+export default function CategorySelect({
+  infoText,
+  placeholder,
+  category,
+  setCategory,
+  labelClassName,
+  selectClassName,
+}: CategorySelectProps) {
   return (
     <>
-    <Label htmlFor='category' className={clsx("font-semibold text-[20px]", labelClassName)}>
-      {infoText}
-    </Label>
-    <Select
-      value={category}
-      onValueChange={(value) => setCategory(value)}
-    >
-      <SelectTrigger id='category' className={clsx("w-full h-[42px]" + selectClassName)}>
+      <Label
+        htmlFor='category'
+        className={clsx('font-semibold text-[20px]', labelClassName)}
+      >
+        {infoText}
+      </Label>
+      <Select value={category} onValueChange={(value) => setCategory(value)}>
+        <SelectTrigger
+          id='category'
+          className={clsx('w-full h-[42px]' + selectClassName)}
+        >
           <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
+        </SelectTrigger>
         <SelectContent>
           <SelectItem value='혼자서'>#혼자서</SelectItem>
           <SelectItem value='가족들과'>#가족들과</SelectItem>
@@ -41,7 +51,7 @@ export default function CategorySelect(
           <SelectItem value='감성있는'>#감성있는</SelectItem>
           {/* 원하는 카테고리들 추가 */}
         </SelectContent>
-    </Select>
+      </Select>
     </>
-  )
+  );
 }
