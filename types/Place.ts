@@ -1,4 +1,3 @@
-
 // 카카오 api로부터 받는 응답
 export interface PlaceResponseKakao {
   id: string;

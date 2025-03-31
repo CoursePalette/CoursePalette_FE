@@ -1,6 +1,6 @@
 import { signIn, signOut } from 'next-auth/react';
 
-import { axiosInstance } from '../axiosInstance';
+import { axiosServer } from '../axiosInstance';
 
 export interface sendKakaoProfileResponse {
   token: string; // 백엔드 JWT
@@ -14,7 +14,7 @@ export const sendKakaoProfile = async (
   nickname: string,
   profileImageUrl: string
 ): Promise<sendKakaoProfileResponse> => {
-  const response = await axiosInstance.post('/auth/kakao', {
+  const response = await axiosServer.post('/auth/kakao', {
     kakaoId,
     nickname,
     profileImageUrl,

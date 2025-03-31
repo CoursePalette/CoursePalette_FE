@@ -1,7 +1,7 @@
 import { Button } from '../ui/button';
 
 export interface RegisterButtonProps {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
 }
 
