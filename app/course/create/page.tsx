@@ -1,7 +1,7 @@
 'use client';
 
 import { createCourse } from '@/api/course';
-import CancleButton from '@/components/atoms/CancleButton';
+import CancelButton from '@/components/atoms/CancelButton';
 import CategorySelect from '@/components/atoms/CategorySelect';
 import PlaceSelect from '@/components/atoms/PlaceSelect';
 import RegisterButton from '@/components/atoms/RegisterButton';
@@ -48,7 +48,7 @@ export default function CourseCreatePage() {
     },
   });
 
-  const handleCancle = useCallback(() => {
+  const handleCancel = useCallback(() => {
     setTitle('');
     setCategory('');
     clearPlaces();
@@ -89,8 +89,9 @@ export default function CourseCreatePage() {
   );
 
   return (
-    <div className='w-full h-full flex justify-center pt-[50px] px-[20px]'>
-      <div className='w-[365px] md:w-[700px]  flex flex-col'>
+    <form className='w-full h-full flex justify-center pt-[50px] px-[20px]'>
+      <fieldset className='w-[365px] md:w-[700px]  flex flex-col'>
+        <legend className='sr-only'>코스 등록</legend>
         <TextInput
           infoText={'코스 제목을 입력해주세요.'}
           placeholder={'ex) 혼자서 성수동 즐기는 코스'}
@@ -113,10 +114,10 @@ export default function CourseCreatePage() {
         />
 
         <div className='mt-[50px] w-full flex justify-between'>
-          <CancleButton onClick={handleCancle} />
+          <CancelButton onClick={handleCancel} />
           <RegisterButton onClick={handleRegister} disabled={!canRegister} />
         </div>
-      </div>
-    </div>
+      </fieldset>
+    </form>
   );
 }
