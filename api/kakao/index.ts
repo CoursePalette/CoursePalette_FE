@@ -1,5 +1,6 @@
 import { signIn, signOut } from 'next-auth/react';
-import { axiosInstance } from '../axiosInstance';
+
+import { axiosServer } from '../axiosInstance';
 
 export interface sendKakaoProfileResponse {
   token: string; // 백엔드 JWT
@@ -8,28 +9,26 @@ export interface sendKakaoProfileResponse {
   profileImageUrl: string;
 }
 
-export const sendKakaoProfile = async(
+export const sendKakaoProfile = async (
   kakaoId: number,
   nickname: string,
-  profileImageUrl: string,
-) : Promise<sendKakaoProfileResponse> => {
-  const response = await axiosInstance.post('/auth/kakao', {
+  profileImageUrl: string
+): Promise<sendKakaoProfileResponse> => {
+  const response = await axiosServer.post('/auth/kakao', {
     kakaoId,
     nickname,
     profileImageUrl,
   });
 
   return response.data;
-}
+};
 
-export const kakaoLogin = async() => {
+export const kakaoLogin = async () => {
   await signIn('kakao');
-}
+};
 
-export const kakaoLogout = async() => {
-  await signOut(
-    {
-      callbackUrl: "/"
-    }
-  )
+export const kakaoLogout = async () => {
+  await signOut({
+    callbackUrl: '/',
+  });
 };
