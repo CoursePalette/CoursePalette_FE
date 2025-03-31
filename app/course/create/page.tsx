@@ -11,6 +11,7 @@ import { useCreateCourseStore } from '@/store/course/useCreateCourseStore';
 import { CreateCourseRequestDto, CreateCourseResponse } from '@/types/\bCourse';
 import { useMutation } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
+import Swal from 'sweetalert2';
 
 import { useRouter } from 'next/navigation';
 
@@ -40,11 +41,11 @@ export default function CourseCreatePage() {
       setTitle('');
       setCategory('');
       clearPlaces();
-      alert('등록 완료! 코스 아이디는' + data.courseId);
+      Swal.fire('등록 완료', `코스가 성공적으로 등록되었습니다!`, 'success');
     },
     onError: (error) => {
       console.error('코스 등록 실패', error);
-      alert('코스 등록 중 오류 발생');
+      Swal.fire('오류', '코스 등록 중 오류 발생', 'error');
     },
   });
 
@@ -61,7 +62,7 @@ export default function CourseCreatePage() {
       if (!canRegister) return;
 
       if (!session?.user?.backendJwt) {
-        alert('로그인이 필요합니다.');
+        Swal.fire('로그인 필요', '로그인이 필요합니다.', 'warning');
         return;
       }
 

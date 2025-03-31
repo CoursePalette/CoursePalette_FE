@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useCreateCourseStore } from '@/store/course/useCreateCourseStore';
 import { Place, PlaceResponseKakao } from '@/types/Place';
 import clsx from 'clsx';
+import Swal from 'sweetalert2';
 
 import { useState } from 'react';
 
@@ -17,16 +17,6 @@ import {
   DialogTrigger,
 } from '../ui/dialog';
 import { Input } from '../ui/input';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface PlaceSelecProps {
   className?: string;
@@ -47,20 +37,23 @@ export default function PlaceSelect({ className }: PlaceSelecProps) {
 
     window.kakao.maps.load(() => {
       const ps = new window.kakao.maps.services.Places();
-      ps.keywordSearch(keyword, (data: any, status: any) => {
-        if (status === window.kakao.maps.services.Status.OK) {
-          setResults(data);
-        } else {
-          setResults([]);
+      ps.keywordSearch(
+        keyword,
+        (data: PlaceResponseKakao[], status: string) => {
+          if (status === window.kakao.maps.services.Status.OK) {
+            setResults(data);
+          } else {
+            setResults([]);
+          }
         }
-      });
+      );
     });
   };
 
   const handleSelectPlace = (place: PlaceResponseKakao) => {
     const alreadyExists = places.some((p) => p.id === place.id);
     if (alreadyExists) {
-      alert('이미 추가된 장소입니다.');
+      Swal.fire('중복 알림', '이미 추가된 장소입니다.', 'warning');
       return;
     }
 
