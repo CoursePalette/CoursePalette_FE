@@ -26,6 +26,8 @@ import { Input } from '../ui/input';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface PlaceSelecProps {
   className?: string;
 }
@@ -98,6 +100,7 @@ export default function PlaceSelect({ className }: PlaceSelecProps) {
           <div className='flex gap-2 mt-4'>
             <Input
               value={keyword}
+              aria-label='장소 검색어'
               onChange={(e) => setKeyword(e.target.value)}
               placeholder='검색어를 입력해주세요. ex)양재역 햄버거'
               onKeyDown={(e) => {
