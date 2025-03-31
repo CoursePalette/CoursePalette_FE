@@ -39,7 +39,7 @@ export default function CourseCreatePage() {
   };
 
   return (
-    <div className='w-full h-full flex justify-center p-[50px]'>
+    <div className='w-full h-full flex justify-center pt-[50px] px-[20px]'>
       <div className='w-[365px] md:w-[700px]  flex flex-col'>
         <TextInput
           infoText={'코스 제목을 입력해주세요.'}
