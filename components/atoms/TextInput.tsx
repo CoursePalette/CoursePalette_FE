@@ -34,6 +34,7 @@ export default function TextInput({
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
         className={clsx('w-full h-[42px]', inputClassName)}
+        tabIndex={0}
       />
     </>
   );

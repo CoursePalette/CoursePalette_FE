@@ -38,17 +38,32 @@ export default function CategorySelect({
         <SelectTrigger
           id='category'
           className={clsx('w-full h-[42px]' + selectClassName)}
+          tabIndex={0}
         >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value='혼자서'>#혼자서</SelectItem>
-          <SelectItem value='가족들과'>#가족들과</SelectItem>
-          <SelectItem value='데이트'>#데이트</SelectItem>
-          <SelectItem value='친구들과'>#친구들과</SelectItem>
-          <SelectItem value='단체로'>#단체로</SelectItem>
-          <SelectItem value='신나는'>#신나는</SelectItem>
-          <SelectItem value='감성있는'>#감성있는</SelectItem>
+          <SelectItem value='혼자서' tabIndex={0}>
+            #혼자서
+          </SelectItem>
+          <SelectItem value='가족들과' tabIndex={0}>
+            #가족들과
+          </SelectItem>
+          <SelectItem value='데이트' tabIndex={0}>
+            #데이트
+          </SelectItem>
+          <SelectItem value='친구들과' tabIndex={0}>
+            #친구들과
+          </SelectItem>
+          <SelectItem value='단체로' tabIndex={0}>
+            #단체로
+          </SelectItem>
+          <SelectItem value='신나는' tabIndex={0}>
+            #신나는
+          </SelectItem>
+          <SelectItem value='감성있는' tabIndex={0}>
+            #감성있는
+          </SelectItem>
           {/* 원하는 카테고리들 추가 */}
         </SelectContent>
       </Select>
