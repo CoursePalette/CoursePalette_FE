@@ -29,15 +29,25 @@ export default function Header() {
           className='cursor-pointer'
           size={35}
           onClick={handleBack}
+          role='button'
+          tabIndex={0}
         />
         <span
           className='cursor-pointer font-semibold text-[16px]'
           onClick={handleHome}
+          role='button'
+          tabIndex={0}
         >
           코스팔레트
         </span>
       </div>
-      <IoMenu className='cursor-pointer' size={30} onClick={handleMenu} />
+      <IoMenu
+        className='cursor-pointer'
+        size={30}
+        onClick={handleMenu}
+        role='button'
+        tabIndex={0}
+      />
     </div>
   );
 }
