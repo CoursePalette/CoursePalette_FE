@@ -81,6 +81,7 @@ export default function PlaceSelect({ className }: PlaceSelecProps) {
             className={
               'w-full h-[42px] rounded-md border border-input bg-transparent px-3 py-1 shadow-sm flex items-center'
             }
+            tabIndex={0}
           >
             <p className='text-sm text-muted-foreground'>장소를 검색하세요.</p>
           </div>
