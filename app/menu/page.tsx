@@ -15,7 +15,10 @@ export default function MenuPage() {
   }
 
   return (
-    <div className='w-full h-full flex flex-col items-center py-[50px]'>
+    <main
+      className='w-full h-full flex flex-col items-center py-[50px]'
+      role='main'
+    >
       <Header />
       <div className='w-full max-w-[768px]'>
         {session?.user?.backendJwt ? (
@@ -29,6 +32,6 @@ export default function MenuPage() {
           <MenuBox text='로그인' url='sign-in' />
         )}
       </div>
-    </div>
+    </main>
   );
 }
