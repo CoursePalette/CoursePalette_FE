@@ -45,7 +45,7 @@ export default function ModalHeader() {
         코스팔레트
       </span>
 
-      <div className='flex-1 flex gap-[5px] items-center'>
+      <div className='flex-1 flex gap-[5px] items-center shadow-none'>
         <Input
           className='flex-1'
           value={search}
