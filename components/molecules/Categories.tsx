@@ -24,7 +24,7 @@ export default function Categories() {
   return (
     <div
       role='group'
-      className='flex gap-[20px] w-[350px] md:w-[700px] overflow-x-auto overflow-y-hidden custom-scroll
+      className='flex gap-[20px] w-[calc(100%_-_20px)] min-w-[350px] max-w-[700px] md:w-[700px] overflow-x-auto overflow-y-hidden custom-scroll
       fixed top-[95px] left-1/2 transform -translate-x-1/2 z-50
     '
       tabIndex={0}

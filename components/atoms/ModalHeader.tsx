@@ -31,7 +31,7 @@ export default function ModalHeader() {
 
   return (
     <div
-      className='w-[350px] md:w-[700px] h-[50px]
+      className='w-[calc(100%_-_20px)] min-w-[350px] max-w-[700px] md:w-[700px] h-[50px]
      rounded-[10px] backdrop-blur-3xl bg-white/80 flex items-center
      px-[10px] fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 shadow-lg gap-[20px]
      '
