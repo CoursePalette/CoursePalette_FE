@@ -86,4 +86,29 @@
   #map {
     z-index: 0;
   }
+
+  .custom-scroll::-webkit-scrollbar {
+    width: 2px; /* 스크롤바의 너비 설정 */
+  }
+
+  .custom-scroll::-webkit-scrollbar-track {
+    background: transparent; /* 스크롤바 배경(트랙)을 투명하게 */
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); /* 스크롤바 thumb 색상과 투명도 설정 */
+    border-radius: 4px;
+  }
+
+  /* Firefox용 설정 */
+  .custom-scroll {
+    cursor: pointer;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  }
 }

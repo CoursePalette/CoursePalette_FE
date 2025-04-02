@@ -8,7 +8,7 @@ import RegisterButton from '@/components/atoms/RegisterButton';
 import TextInput from '@/components/atoms/TextInput';
 import PlacesManage from '@/components/molecules/PlacesManage';
 import { useCreateCourseStore } from '@/store/course/useCreateCourseStore';
-import { CreateCourseRequestDto, CreateCourseResponse } from '@/types/\bCourse';
+import { CreateCourseRequestDto, CreateCourseResponse } from '@/types/Course';
 import { useMutation } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import Swal from 'sweetalert2';

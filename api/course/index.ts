@@ -1,4 +1,4 @@
-import { CreateCourseRequestDto, CreateCourseResponse } from '@/types/\bCourse';
+import { CreateCourseRequestDto, CreateCourseResponse } from '@/types/Course';
 
 import { axiosClient } from '../axiosInstance';
 
