@@ -1,19 +1,25 @@
-import CourseCreateButton from '@/components/atoms/CourseCreateButton';
-import ModalHeader from '@/components/atoms/ModalHeader';
-import SidebarOpenButton from '@/components/atoms/SidebarOpenButton';
-import Categories from '@/components/molecules/Categories';
-import SideBar from '@/components/molecules/SideBar';
-import Map from '@/components/organisms/Map';
+import { getHomeData } from '@/api/home';
+import HomeClient from '@/components/organisms/HomeClient';
+import { QueryClient, dehydrate } from '@tanstack/react-query';
 
-export default function Home() {
-  return (
-    <main className='w-full h-full relative'>
-      <ModalHeader />
-      <Map />
-      <Categories />
-      <SideBar />
-      <SidebarOpenButton />
-      <CourseCreateButton />
-    </main>
-  );
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '코스팔레트 홈',
+  description: '지도 기반 사용자 참여형 코스 추천 및 공유 플랫폼',
+};
+
+export default async function Home() {
+  const queryClient = new QueryClient();
+
+  // 기본 검색어 및 카테고리로 prefetch 진행
+  await queryClient.prefetchQuery({
+    queryKey: ['homeData', '', '전체'],
+    queryFn: () => getHomeData('', '전체'),
+  });
+
+  // srr로 미리 불러온 상태를 dehydrate함
+  const dehydratedState = dehydrate(queryClient);
+
+  return <HomeClient dehydratedState={dehydratedState} />;
 }
