@@ -1,3 +1,5 @@
+import { UserDto } from './User';
+
 export interface CoursePlaceRequestDto {
   placeId: string;
   name: string;
@@ -17,4 +19,13 @@ export interface CreateCourseRequestDto {
 export interface CreateCourseResponse {
   courseId: number;
   message: string;
+}
+
+export interface CourseSimpleDto {
+  courseId: number;
+  user: UserDto;
+  title: string;
+  category: string;
+  favorite: number;
+  createdAt: string;
 }
