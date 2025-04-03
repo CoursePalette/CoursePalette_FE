@@ -1,14 +1,33 @@
 'use client';
 
+import { getHomeData } from '@/api/home';
+import { useCategoryStore } from '@/store/course/useCategoryStore';
+import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
 import { useSidebarStore } from '@/store/sidebar/useSidebarStore';
+import { useQuery } from '@tanstack/react-query';
 import { motion } from 'motion/react';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
+
+import { useEffect } from 'react';
 
 const SIDEBAR_WIDTH = 375;
 
 export default function SideBar() {
   const isOpen = useSidebarStore((state) => state.isOpen);
   const toggle = useSidebarStore((state) => state.toggle);
+  const category = useCategoryStore((state) => state.selectedCategory);
+  const search = useSearchCourseStore((state) => state.search);
+
+  const { data } = useQuery({
+    queryKey: ['homeData', search, category],
+    queryFn: () => getHomeData(search, category),
+  });
+
+  const courses = data?.courses || [];
+
+  useEffect(() => {
+    console.log('courses : ', courses);
+  }, [courses]);
 
   return (
     <motion.aside

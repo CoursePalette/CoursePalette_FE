@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
+
+import { getHomeData } from '@/api/home';
+import { useCategoryStore } from '@/store/course/useCategoryStore';
+import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
+import { useQuery } from '@tanstack/react-query';
 
 import { useEffect, useRef } from 'react';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 // 지도는 CSR
-
 declare global {
   interface Window {
     kakao: any;
@@ -19,6 +16,19 @@ declare global {
 
 export default function Map() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const category = useCategoryStore((state) => state.selectedCategory);
+  const search = useSearchCourseStore((state) => state.search);
+
+  const { data } = useQuery({
+    queryKey: ['homeData', search, category],
+    queryFn: () => getHomeData(search, category),
+  });
+
+  const places = data?.places || [];
+
+  useEffect(() => {
+    console.log('places :', places);
+  }, [places]);
 
   useEffect(() => {
     // 스크립트가 로드 된 후 실행하자
