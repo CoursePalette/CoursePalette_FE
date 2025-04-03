@@ -48,6 +48,7 @@ export default function SideBar() {
           role='button'
           className='cursor-pointer w-[30px] h-[30px]'
           onClick={toggle}
+          aria-label='사이드바 닫기'
         />
       </div>
       <div className='w-full pt-[10px] items-center  flex flex-col gap-[20px] overflow-y-auto overflow-x-hidden custom-scroll'>

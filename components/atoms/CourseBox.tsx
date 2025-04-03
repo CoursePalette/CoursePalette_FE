@@ -18,8 +18,18 @@ export default function CourseBox({ course }: CourseBoxProps) {
     router.push(`/course/${course.courseId}`);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handelRouting();
+    }
+  };
+
   return (
     <div
+      role='button'
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
       onClick={handelRouting}
       className='flex items-center justify-between px-[20px] w-[365px] h-[100px] rounded-[16px] border border-[#D1D5DC] cursor-pointer box-border'
     >
