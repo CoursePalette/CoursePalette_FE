@@ -103,6 +103,10 @@
     z-index: 0;
   }
 
+  .noScroll::-webkit-scrollbar {
+    background: transparent;
+  }
+
   .custom-scroll::-webkit-scrollbar {
     width: 2px; /* 스크롤바의 너비 설정 */
   }
