@@ -26,3 +26,12 @@ export interface Place {
 export interface PlaceWithSequence extends Place {
   sequence: number;
 }
+
+export interface PlaceDto {
+  placeId: string;
+  name: string;
+  address: string;
+  latitude: string;
+  longitude: string;
+  placeUrl: string;
+}

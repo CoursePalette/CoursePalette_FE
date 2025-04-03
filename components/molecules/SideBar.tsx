@@ -10,6 +10,9 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { useEffect } from 'react';
 
+import CourseBox from '../atoms/CourseBox';
+import { ScrollArea } from '../ui/scroll-area';
+
 const SIDEBAR_WIDTH = 375;
 
 export default function SideBar() {
@@ -32,7 +35,7 @@ export default function SideBar() {
   return (
     <motion.aside
       id='sidebar'
-      className='w-[375px] h-full bg-white fixed left-[-375px] top-0 z-[50] py-[20px]'
+      className='w-[375px] h-full bg-white fixed left-[-375px] top-0 z-[50] pt-[20px] flex flex-col'
       animate={{ x: isOpen ? SIDEBAR_WIDTH : 0 }}
       transition={{ type: 'tween', duration: 0.3 }}
       aria-hidden={!isOpen} // 열리지 않았다면 스크린 리더가 건너뛰도록..
@@ -46,6 +49,9 @@ export default function SideBar() {
           className='cursor-pointer w-[30px] h-[30px]'
           onClick={toggle}
         />
+      </div>
+      <div className='w-full pt-[10px] items-center  flex flex-col gap-[20px] overflow-y-auto overflow-x-hidden custom-scroll'>
+        {courses?.map((course) => <CourseBox course={course} />)}
       </div>
     </motion.aside>
   );
