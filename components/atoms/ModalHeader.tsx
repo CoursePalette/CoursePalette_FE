@@ -6,7 +6,7 @@ import { MdSearch } from 'react-icons/md';
 
 import { useRouter } from 'next/navigation';
 
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Input } from '../ui/input';
 
@@ -14,6 +14,7 @@ export default function ModalHeader() {
   const router = useRouter();
   const search = useSearchCourseStore((state) => state.search);
   const setSearch = useSearchCourseStore((state) => state.setSearch);
+  const [inputValue, setInputValue] = useState('');
   // const clearSearch = useSearchCourseStore((state) => state.clearSearch);
 
   const handleHome = useCallback(() => {
@@ -26,8 +27,9 @@ export default function ModalHeader() {
 
   const handleSearch = useCallback(() => {
     console.log('입력값은 : ', search);
+    setSearch(inputValue);
     // clearSearch();
-  }, [search]);
+  }, [inputValue, search, setSearch]);
 
   return (
     <div
@@ -48,8 +50,8 @@ export default function ModalHeader() {
       <div className='flex-1 flex gap-[5px] items-center shadow-none'>
         <Input
           className='flex-1'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           placeholder='예) 성수동 데이트'
           tabIndex={0}
           onKeyDown={(e) => {

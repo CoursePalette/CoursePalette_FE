@@ -1,3 +1,5 @@
+import { CourseSimpleDto } from './Course';
+
 // 카카오 api로부터 받는 응답
 export interface PlaceResponseKakao {
   id: string;
@@ -34,4 +36,8 @@ export interface PlaceDto {
   latitude: string;
   longitude: string;
   placeUrl: string;
+}
+
+export interface PlaceWithCoursesResponseDto extends PlaceDto {
+  courses: CourseSimpleDto[];
 }
