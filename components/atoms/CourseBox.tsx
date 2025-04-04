@@ -15,7 +15,7 @@ export default function CourseBox({ course }: CourseBoxProps) {
   const router = useRouter();
 
   const handelRouting = () => {
-    router.push(`/course/${course.courseId}`);
+    router.push(`/course/detail/${course.courseId}`);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {

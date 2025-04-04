@@ -9,8 +9,8 @@ import CourseCreateButton from '../atoms/CourseCreateButton';
 import ModalHeader from '../atoms/ModalHeader';
 import SidebarOpenButton from '../atoms/SidebarOpenButton';
 import Categories from '../molecules/Categories';
+import Map from '../molecules/Map';
 import SideBar from '../molecules/SideBar';
-import Map from './Map';
 
 interface HomeClientProps {
   dehydratedState: unknown;
