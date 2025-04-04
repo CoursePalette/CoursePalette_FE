@@ -28,7 +28,7 @@ function HomeClientInner() {
   const search = useSearchCourseStore((state) => state.search);
   const category = useCategoryStore((state) => state.selectedCategory);
 
-  const { data, isLoading, isError } = useQuery({
+  const { isLoading, isError } = useQuery({
     queryKey: ['homeData', search, category],
     queryFn: () => getHomeData(search, category),
   });
