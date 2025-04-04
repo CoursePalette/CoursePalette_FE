@@ -38,21 +38,22 @@ export default function ModalHeader() {
      px-[10px] fixed top-[30px] left-1/2 transform -translate-x-1/2 z-50 shadow-lg gap-[20px]
      '
     >
-      <span
+      <button
         className='cursor-pointer font-semibold text-[16px]'
         onClick={handleHome}
         role='button'
         tabIndex={0}
+        aria-label='홈으로 이동'
       >
         코스팔레트
-      </span>
+      </button>
 
       <div className='flex-1 flex gap-[5px] items-center shadow-none'>
         <Input
           className='flex-1'
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder='예) 성수동 데이트'
+          placeholder='코스를 검색해 보세요! ex) 양재, 성수'
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -67,6 +68,7 @@ export default function ModalHeader() {
           className='cursor-pointer'
           tabIndex={0}
           onClick={handleSearch}
+          aria-label='검색하기'
         />
       </div>
 
@@ -76,6 +78,7 @@ export default function ModalHeader() {
         onClick={handleMenu}
         role='button'
         tabIndex={0}
+        aria-label='메뉴 열기'
       />
     </div>
   );
