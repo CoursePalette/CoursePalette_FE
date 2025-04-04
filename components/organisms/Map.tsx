@@ -49,7 +49,7 @@ export default function Map() {
 
       const options = {
         center: new window.kakao.maps.LatLng(37.5665, 126.978), // 서울시청 좌표
-        level: 6, // 확대 레벨 (값이 작을수록 더 확대됨)
+        level: 8, // 확대 레벨 (값이 작을수록 더 확대됨)
       };
 
       const map = new window.kakao.maps.Map(container, options);

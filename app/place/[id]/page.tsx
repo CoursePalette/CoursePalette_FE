@@ -20,38 +20,17 @@ export default async function PlacePage({ params }: PlacePageProps) {
   console.log('PlacePage, data: ', data);
 
   return (
-    <div className='w-full h-full pt-[100px] flex flex-col items-center'>
-      <div className='flex flex-col gap-[20px] items-center'>
-        <p className='text-[24px] font-semibold'>{data.name}</p>
+    <main className='w-full h-full pt-[100px] flex flex-col items-center'>
+      <header className='flex flex-col gap-[20px] items-center'>
+        <h1 className='text-[24px] font-semibold'>{data.name}</h1>
         <p className='text-[16px]'>{data.address}</p>
         <PlaceDetailButton placeUrl={data.placeUrl} />
-      </div>
-      <div className='w-full max-w-[768px] mt-[50px] py-[20px] grid grid-cols-1 md:grid-cols-2 justify-items-center gap-[20px]'>
+      </header>
+      <section className='w-full max-w-[768px] mt-[50px] py-[20px] grid grid-cols-1 md:grid-cols-2 justify-items-center gap-[20px]'>
         {data?.courses.map((course, idx) => (
           <CourseBox key={idx} course={course} />
         ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-        {data?.courses.map((course, idx) => (
-          <CourseBox key={idx} course={course} />
-        ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

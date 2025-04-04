@@ -16,6 +16,7 @@ export default function PlaceDetailButton({
     '
       onClick={() => window.open(placeUrl, '_blank', 'noopener,noreferrer')}
       tabIndex={0}
+      aria-label='장소 상세 정보 보기'
     >
       장소 상세 정보 보기
     </Button>
