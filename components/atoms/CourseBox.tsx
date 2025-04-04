@@ -31,7 +31,7 @@ export default function CourseBox({ course }: CourseBoxProps) {
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onClick={handelRouting}
-      className='flex items-center justify-between px-[20px] w-[365px] h-[100px] rounded-[16px] border border-[#D1D5DC] cursor-pointer box-border'
+      className='flex items-center justify-between px-[20px] w-[365px] h-[100px] rounded-[16px] border border-[#D1D5DC] hover:border-black cursor-pointer box-border'
     >
       <div className='flex flex-col'>
         <div className='flex items-center gap-[7px] pt-[10px]'>
