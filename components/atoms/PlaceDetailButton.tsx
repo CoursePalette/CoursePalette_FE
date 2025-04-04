@@ -3,17 +3,19 @@
 import { Button } from '../ui/button';
 
 interface PlaceDetailButtonProps {
-  onClick: () => void;
-  // () => window.open(placeUrl, '_blank', 'noopener,noreferrer')
+  placeUrl: string;
 }
 
-export default function PlaceDetailButton({ onClick }: PlaceDetailButtonProps) {
+export default function PlaceDetailButton({
+  placeUrl,
+}: PlaceDetailButtonProps) {
   return (
     <Button
       className='!w-[200px] !h-[40px] text-center leading-[40px] bg-[#D3E4FF] text-[#0064FF] text-[16px] rounded-[16px]
       hover:bg-[#0064FF] hover:text-white
     '
-      onClick={onClick}
+      onClick={() => window.open(placeUrl, '_blank', 'noopener,noreferrer')}
+      tabIndex={0}
     >
       장소 상세 정보 보기
     </Button>
