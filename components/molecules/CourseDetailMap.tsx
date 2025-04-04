@@ -7,20 +7,26 @@ import { useEffect, useRef } from 'react';
 
 import CustomPin from '../atoms/CustomPin';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // 지도는 CSR
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     kakao: any;
   }
 }
 
 interface CourseDetailMapProps {
   places: PlaceDtoWithSequence[];
+  currentIndex: number;
 }
 
-export default function CourseDetailMap({ places }: CourseDetailMapProps) {
+export default function CourseDetailMap({
+  places,
+  currentIndex,
+}: CourseDetailMapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<any>(null);
 
   useEffect(() => {
     // 스크립트가 로드 된 후 실행하자
@@ -33,6 +39,8 @@ export default function CourseDetailMap({ places }: CourseDetailMapProps) {
       const container = mapContainerRef.current;
       if (!container) return;
 
+      const bounds = new window.kakao.maps.LatLngBounds();
+
       const options = {
         center: new window.kakao.maps.LatLng(
           parseFloat(places[0].latitude),
@@ -41,9 +49,8 @@ export default function CourseDetailMap({ places }: CourseDetailMapProps) {
         level: 5,
       };
 
-      const map = new window.kakao.maps.Map(container, options);
+      mapRef.current = new window.kakao.maps.Map(container, options);
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const path: any[] = [];
 
       places.forEach((place) => {
@@ -64,9 +71,10 @@ export default function CourseDetailMap({ places }: CourseDetailMapProps) {
         );
 
         path.push(position);
+        bounds.extend(position); // 영역에 추가
 
         new window.kakao.maps.CustomOverlay({
-          map,
+          map: mapRef.current,
           position,
           content,
           yAnchor: 1, // 핀의 아래쪽 끝을 기준으로 오버레이 위치 설정 옵션
@@ -81,9 +89,20 @@ export default function CourseDetailMap({ places }: CourseDetailMapProps) {
         strokeStyle: 'solid',
       });
 
-      polyline.setMap(map);
+      polyline.setMap(mapRef.current);
+      mapRef.current.setBounds(bounds); // 계산된 영역으로 줌 및 위치 조정
     });
   }, [places]);
+
+  useEffect(() => {
+    if (mapRef.current && places[currentIndex]) {
+      const moveLatLng = new window.kakao.maps.LatLng(
+        places[currentIndex].latitude,
+        places[currentIndex].longitude
+      );
+      mapRef.current.panTo(moveLatLng);
+    }
+  }, [currentIndex, places]);
 
   return (
     <div

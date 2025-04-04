@@ -39,7 +39,7 @@ export interface PlaceDto {
 }
 
 export interface PlaceDtoWithSequence extends PlaceDto {
-  sequnce: number;
+  sequence: number;
 }
 
 export interface PlaceWithCoursesResponseDto extends PlaceDto {

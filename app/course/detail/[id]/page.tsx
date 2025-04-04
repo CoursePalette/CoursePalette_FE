@@ -1,5 +1,5 @@
 import { getCourseDetail } from '@/api/course';
-import CourseDetailMap from '@/components/organisms/CourseDetailMap';
+import CourseDetailClient from '@/components/organisms/CourseDetailClient';
 
 import { Metadata } from 'next';
 
@@ -23,7 +23,7 @@ export default async function CourseDetailPage({
 
   return (
     <main>
-      <CourseDetailMap places={data.places} />
+      <CourseDetailClient places={data.places} />
     </main>
   );
 }
