@@ -12,7 +12,7 @@ export default function CourseCreateButton() {
   return (
     <Button
       className='!w-[50px] !h-[50px] md:!w-[75px] md:!h-[75px] bg-[#0064FF] hover:bg-[#D3E4FF] text-white hover:text-[#0064FF] flex items-center justify-center
-      fixed bottom-[60px] right-[20px] md:bottom-[60px] md:right-[55px] rounded-full
+      fixed bottom-[60px] right-[20px] md:bottom-[60px] md:right-[55px] rounded-full shadow-lg
     '
       onClick={() => router.push('/course/create')}
       tabIndex={0}

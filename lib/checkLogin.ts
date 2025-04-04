@@ -10,7 +10,7 @@ export const checkLogin = (router: AppRouterInstance) => {
     icon: 'warning',
     showCancelButton: true,
     confirmButtonText: '로그인하기',
-    cancelButtonColor: '뒤로가기',
+    cancelButtonText: '뒤로가기',
   }).then((result) => {
     if (result.isConfirmed) {
       kakaoLogin();
