@@ -3,6 +3,9 @@ import { getSession } from 'next-auth/react';
 
 const axiosClient: AxiosInstance = axios.create({
   baseURL: process.env.API_BASE_URL || 'http://localhost:8080',
+  headers: {
+    'Content-Type': 'application/json',
+  },
   timeout: 5000,
 });
 
@@ -24,6 +27,9 @@ axiosClient.interceptors.request.use(
 
 const axiosServer: AxiosInstance = axios.create({
   baseURL: process.env.API_BASE_URL || 'http://localhost:8080',
+  headers: {
+    'Content-Type': 'application/json',
+  },
   timeout: 5000,
 });
 

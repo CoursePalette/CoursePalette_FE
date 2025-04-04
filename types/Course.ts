@@ -34,3 +34,11 @@ export interface CourseSimpleDto {
 export interface CourseDetailResponseDto {
   places: PlaceDtoWithSequence[];
 }
+
+export interface FavoriteRequestDto {
+  courseId: number;
+}
+
+export interface FavoriteResponseDto {
+  message: string;
+}

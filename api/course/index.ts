@@ -1,4 +1,9 @@
-import { CreateCourseRequestDto, CreateCourseResponse } from '@/types/Course';
+import {
+  CreateCourseRequestDto,
+  CreateCourseResponse,
+  FavoriteRequestDto,
+  FavoriteResponseDto,
+} from '@/types/Course';
 import { CourseDetailResponseDto } from '@/types/Course';
 
 import { axiosClient, axiosServer } from '../axiosInstance';
@@ -20,6 +25,16 @@ export async function getCourseDetail({
 }): Promise<CourseDetailResponseDto> {
   const response = await axiosServer.get<CourseDetailResponseDto>(
     `/course/detail/${courseId}`
+  );
+  return response.data;
+}
+
+export async function registCourseFavorite({
+  courseId,
+}: FavoriteRequestDto): Promise<FavoriteResponseDto> {
+  const response = await axiosClient.post<FavoriteResponseDto>(
+    '/course/favorite',
+    { courseId }
   );
   return response.data;
 }

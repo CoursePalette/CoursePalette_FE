@@ -19,11 +19,13 @@ import PlaceDetailButton from '../atoms/PlaceDetailButton';
 interface PlaceSlideProps {
   places: PlaceDtoWithSequence[];
   setCurrentSlide: (index: number) => void;
+  courseId: number;
 }
 
 export default function PlaceSlide({
   places,
   setCurrentSlide,
+  courseId,
 }: PlaceSlideProps) {
   const [api, setApi] = useState<CarouselApi | null>(null);
 
@@ -48,7 +50,7 @@ export default function PlaceSlide({
       aria-label='장소 슬라이드 목록'
     >
       <BackButton />
-      <FavoriteButton />
+      <FavoriteButton courseId={courseId} />
       <Carousel
         setApi={setApi}
         className='w-[275px] md:w-[375px] h-[200px] bg-white rounded-[16px] shadow-lg '

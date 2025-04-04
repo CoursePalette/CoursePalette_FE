@@ -23,7 +23,7 @@ export default async function CourseDetailPage({
 
   return (
     <main>
-      <CourseDetailClient places={data.places} />
+      <CourseDetailClient places={data.places} courseId={Number(id)} />
     </main>
   );
 }
