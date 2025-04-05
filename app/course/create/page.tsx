@@ -69,6 +69,15 @@ export default function CourseCreatePage() {
     },
   });
 
+  // 상태 초기화..
+  useEffect(() => {
+    return () => {
+      setTitle('');
+      setCategory('');
+      clearPlaces();
+    };
+  }, [clearPlaces, setCategory, setTitle]);
+
   const handleCancel = useCallback(() => {
     setTitle('');
     setCategory('');
@@ -117,9 +126,9 @@ export default function CourseCreatePage() {
   );
 
   return (
-    <form className='w-full h-full flex justify-center pt-[100px] px-[20px] pb-[20px]'>
-      <fieldset className='w-[365px] md:w-[700px]  flex flex-col'>
-        <legend className='sr-only'>코스 등록</legend>
+    <form className='w-full h-full flex flex-col items-center justify-center pt-[100px] px-[20px] pb-[20px]'>
+      <h1 className='text-[24px] font-semibold'>코스 등록 페이지</h1>
+      <fieldset className='w-[365px] md:w-[700px]  flex flex-col mt-[20px]'>
         <TextInput
           infoText={'코스 제목을 입력해주세요.'}
           placeholder={'ex) 혼자서 성수동 즐기는 코스'}

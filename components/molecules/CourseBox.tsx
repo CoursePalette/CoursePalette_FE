@@ -107,6 +107,7 @@ export default function CourseBox({ course }: CourseBoxProps) {
             <EditButton
               onClick={(e) => {
                 e.stopPropagation();
+                router.push(`/course/edit/${course.courseId}`);
               }}
             />
             <DeleteButton
