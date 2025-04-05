@@ -1,0 +1,35 @@
+'use client';
+
+import { getMyCourses } from '@/api/course';
+import EditToggleButton from '@/components/atoms/EditToggleButton';
+import CourseBox from '@/components/molecules/CourseBox';
+import { useQuery } from '@tanstack/react-query';
+
+export default function MyCoursePage() {
+  const {
+    data: courses,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['myCourses'],
+    queryFn: getMyCourses,
+  });
+
+  // 페이지 따로 만들자.. TODO
+  if (isLoading) return <div>로딩중입니다..</div>;
+  if (isError) return <div>에러 발생</div>;
+
+  return (
+    <main className='w-full h-full pt-[80px] flex flex-col items-center'>
+      <h1 className='text-[32px] font-semibold'>내가 등록한 코스</h1>
+      <div className='w-full max-w-[768px] px-[20px] flex justify-end mt-[20px]'>
+        <EditToggleButton />
+      </div>
+      <section className='grid w-full max-w-[768px] grid-cols-1 md:grid-cols-2 justify-items-center gap-[20px] mt-[20px]'>
+        {courses?.map((course) => (
+          <CourseBox key={course.courseId} course={course} />
+        ))}
+      </section>
+    </main>
+  );
+}

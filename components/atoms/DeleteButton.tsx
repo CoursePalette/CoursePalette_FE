@@ -1,7 +1,7 @@
 import { Button } from '../ui/button';
 
 export interface DeleteButtonProps {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function DeleteButton({ onClick }: DeleteButtonProps) {
