@@ -1,12 +1,15 @@
 'use client';
 
+import { deleteCourse } from '@/api/course';
 import { useCourseEditStore } from '@/store/course/useCourseEditStore';
 import { CourseSimpleDto } from '@/types/Course';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { FaStar } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import Swal from 'sweetalert2';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import DeleteButton from '../atoms/DeleteButton';
 import EditButton from '../atoms/EditButton';
@@ -16,8 +19,40 @@ export interface CourseBoxProps {
 }
 
 export default function CourseBox({ course }: CourseBoxProps) {
+  const queryClient = useQueryClient();
   const router = useRouter();
+  const pathname = usePathname();
+  const isMyCourse = pathname.includes('/mycourse');
+
   const isEdit = useCourseEditStore((state) => state.isEdit);
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteCourse,
+    onSuccess: (data) => {
+      if (data.message === '코스를 성공적으로 삭제했습니다!') {
+        Swal.fire({
+          title: '코스 삭제 완료',
+          text: '코스를 성공적으로 삭제했습니다!',
+          icon: 'success',
+        });
+        // 삭제 성공 시 myCourses 쿼리 무효
+        queryClient.invalidateQueries({ queryKey: ['myCourses'] });
+      } else {
+        Swal.fire({
+          title: '코스 삭제 실패',
+          text: data.message,
+          icon: 'error',
+        });
+      }
+    },
+    onError: () => {
+      Swal.fire({
+        title: '코스 삭제 실패',
+        text: '서버 요청 중 오류가 발생했습니다.',
+        icon: 'error',
+      });
+    },
+  });
 
   const handelRouting = () => {
     router.push(`/course/detail/${course.courseId}`);
@@ -67,18 +102,27 @@ export default function CourseBox({ course }: CourseBoxProps) {
         </div>
       </div>
       {isEdit ? (
-        <section className='flex flex-col gap-[10px]'>
-          <EditButton
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          />
+        isMyCourse ? (
+          <div className='flex flex-col gap-[10px]'>
+            <EditButton
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            />
+            <DeleteButton
+              onClick={async (e) => {
+                e.stopPropagation();
+                deleteMutation.mutate({ courseId: course.courseId });
+              }}
+            />
+          </div>
+        ) : (
           <DeleteButton
             onClick={(e) => {
               e.stopPropagation();
             }}
           />
-        </section>
+        )
       ) : (
         <MdKeyboardArrowRight aria-hidden className='!w-[30px] !h-[30px]' />
       )}

@@ -42,3 +42,7 @@ export interface FavoriteRequestDto {
 export interface FavoriteResponseDto {
   message: string;
 }
+
+export interface DeleteCourseResponseDto {
+  message: string;
+}
