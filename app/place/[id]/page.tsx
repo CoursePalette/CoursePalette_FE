@@ -1,6 +1,6 @@
 import { getPlaceWithCourses } from '@/api/place';
-import CourseBox from '@/components/atoms/CourseBox';
 import PlaceDetailButton from '@/components/atoms/PlaceDetailButton';
+import CourseBox from '@/components/molecules/CourseBox';
 
 import { Metadata } from 'next';
 

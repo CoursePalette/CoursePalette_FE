@@ -1,4 +1,5 @@
 import {
+  CourseSimpleDto,
   CreateCourseRequestDto,
   CreateCourseResponse,
   FavoriteRequestDto,
@@ -36,5 +37,10 @@ export async function registCourseFavorite({
     '/course/favorite',
     { courseId }
   );
+  return response.data;
+}
+
+export async function getMyCourses(): Promise<CourseSimpleDto[]> {
+  const response = await axiosClient.get<CourseSimpleDto[]>('course/mycourse');
   return response.data;
 }

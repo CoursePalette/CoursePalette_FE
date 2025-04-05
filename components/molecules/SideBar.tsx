@@ -10,7 +10,7 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { useEffect } from 'react';
 
-import CourseBox from '../atoms/CourseBox';
+import CourseBox from './CourseBox';
 
 const SIDEBAR_WIDTH = 375;
 
