@@ -3,9 +3,27 @@
 import { getMyCourses } from '@/api/course';
 import EditToggleButton from '@/components/atoms/EditToggleButton';
 import CourseBox from '@/components/molecules/CourseBox';
+import { useCourseEditStore } from '@/store/course/useCourseEditStore';
 import { useQuery } from '@tanstack/react-query';
+import { useSession } from 'next-auth/react';
+
+import { useRouter } from 'next/navigation';
+
+import { useEffect } from 'react';
+
+import { checkLogin } from '@/lib/checkLogin';
 
 export default function MyCoursePage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === 'loading') return;
+    if (!session?.user?.backendJwt) {
+      checkLogin(router);
+    }
+  }, [router, session?.user?.backendJwt, status]);
+
   const {
     data: courses,
     isLoading,
@@ -14,6 +32,14 @@ export default function MyCoursePage() {
     queryKey: ['myCourses'],
     queryFn: getMyCourses,
   });
+
+  const setIsEdit = useCourseEditStore((state) => state.setIsEdit);
+
+  useEffect(() => {
+    return () => {
+      setIsEdit(false);
+    };
+  }, [setIsEdit]);
 
   // 페이지 따로 만들자.. TODO
   if (isLoading) return <div>로딩중입니다..</div>;

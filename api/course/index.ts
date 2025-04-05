@@ -2,6 +2,7 @@ import {
   CourseSimpleDto,
   CreateCourseRequestDto,
   CreateCourseResponse,
+  DeleteCourseResponseDto,
   FavoriteRequestDto,
   FavoriteResponseDto,
 } from '@/types/Course';
@@ -42,5 +43,37 @@ export async function registCourseFavorite({
 
 export async function getMyCourses(): Promise<CourseSimpleDto[]> {
   const response = await axiosClient.get<CourseSimpleDto[]>('course/mycourse');
+  return response.data;
+}
+
+export async function deleteCourse({
+  courseId,
+}: {
+  courseId: number;
+}): Promise<DeleteCourseResponseDto> {
+  const response = await axiosClient.delete<DeleteCourseResponseDto>(
+    `/course/${courseId}`
+  );
+  return response.data;
+}
+
+export async function getCourseEditData(
+  courseId: number
+): Promise<CreateCourseRequestDto> {
+  const response = await axiosClient.get<CreateCourseRequestDto>(
+    `/course/edit/${courseId}`
+  );
+
+  return response.data;
+}
+
+export async function updateCourse(
+  courseId: number,
+  dto: CreateCourseRequestDto
+): Promise<CreateCourseResponse> {
+  const response = await axiosClient.put<CreateCourseResponse>(
+    `/course/${courseId}`,
+    dto
+  );
   return response.data;
 }
