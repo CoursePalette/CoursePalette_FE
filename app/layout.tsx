@@ -26,7 +26,7 @@ export default function RootLayout({
         {/* 지도 타일 및 기타 리소스용 */}
       </head>
       <body className='w-screen h-screen overflow-x-hidden'>
-        <Script src={KAKAO_MAP_SRC} strategy='lazyOnload' />
+        <Script src={KAKAO_MAP_SRC} strategy='beforeInteractive' />
         <Providers>{children}</Providers>
       </body>
     </html>
