@@ -15,11 +15,20 @@ import Swal from 'sweetalert2';
 
 import { useRouter } from 'next/navigation';
 
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
+
+import { checkLogin } from '@/lib/checkLogin';
 
 export default function CourseCreatePage() {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === 'loading') return;
+    if (!session?.user?.backendJwt) {
+      checkLogin(router);
+    }
+  }, [router, session?.user?.backendJwt, status]);
 
   const title = useCreateCourseStore((state) => state.title);
   const setTitle = useCreateCourseStore((state) => state.setTitle);
@@ -41,13 +50,33 @@ export default function CourseCreatePage() {
       setTitle('');
       setCategory('');
       clearPlaces();
-      Swal.fire('등록 완료', `코스가 성공적으로 등록되었습니다!`, 'success');
+      Swal.fire({
+        title: '등록 완료',
+        text: `코스가 성공적으로 등록되었습니다!`,
+        icon: 'success',
+      }).then((result) => {
+        if (
+          result.isConfirmed ||
+          result.dismiss === Swal.DismissReason.backdrop
+        ) {
+          router.push('/');
+        }
+      });
     },
     onError: (error) => {
       console.error('코스 등록 실패', error);
       Swal.fire('오류', '코스 등록 중 오류 발생', 'error');
     },
   });
+
+  // 상태 초기화..
+  useEffect(() => {
+    return () => {
+      setTitle('');
+      setCategory('');
+      clearPlaces();
+    };
+  }, [clearPlaces, setCategory, setTitle]);
 
   const handleCancel = useCallback(() => {
     setTitle('');
@@ -62,8 +91,7 @@ export default function CourseCreatePage() {
       if (!canRegister) return;
 
       if (!session?.user?.backendJwt) {
-        Swal.fire('로그인 필요', '로그인이 필요합니다.', 'warning');
-        return;
+        checkLogin(router);
       }
 
       // 백엔드에서 받는 형태로 변환
@@ -86,13 +114,21 @@ export default function CourseCreatePage() {
       console.log('등록 실행 : ', body);
       mutation.mutate(body);
     },
-    [canRegister, category, mutation, places, session?.user?.backendJwt, title]
+    [
+      canRegister,
+      category,
+      mutation,
+      places,
+      router,
+      session?.user?.backendJwt,
+      title,
+    ]
   );
 
   return (
-    <form className='w-full h-full flex justify-center pt-[100px] px-[20px] pb-[20px]'>
-      <fieldset className='w-[365px] md:w-[700px]  flex flex-col'>
-        <legend className='sr-only'>코스 등록</legend>
+    <form className='w-full h-full flex flex-col items-center justify-center pt-[100px] px-[20px] pb-[20px]'>
+      <h1 className='text-[24px] font-semibold'>코스 등록 페이지</h1>
+      <fieldset className='w-[365px] md:w-[700px]  flex flex-col mt-[20px]'>
         <TextInput
           infoText={'코스 제목을 입력해주세요.'}
           placeholder={'ex) 혼자서 성수동 즐기는 코스'}

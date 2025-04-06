@@ -38,6 +38,10 @@ export interface PlaceDto {
   placeUrl: string;
 }
 
+export interface PlaceDtoWithSequence extends PlaceDto {
+  sequence: number;
+}
+
 export interface PlaceWithCoursesResponseDto extends PlaceDto {
   courses: CourseSimpleDto[];
 }

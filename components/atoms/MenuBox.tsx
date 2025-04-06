@@ -1,24 +1,20 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-
 export interface MenuBoxProps {
   text: string;
-  url: string;
+  onClick: () => void;
 }
 
-export default function MenuBox({ text, url }: MenuBoxProps) {
-  const router = useRouter();
-
+export default function MenuBox({ text, onClick }: MenuBoxProps) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
-      router.push(url);
+      onClick();
     }
   };
 
   return (
     <div
-      onClick={() => router.push(url)}
+      onClick={onClick}
       onKeyDown={handleKeyDown}
       role='button'
       tabIndex={0}

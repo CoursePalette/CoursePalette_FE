@@ -9,8 +9,8 @@ import CourseCreateButton from '../atoms/CourseCreateButton';
 import ModalHeader from '../atoms/ModalHeader';
 import SidebarOpenButton from '../atoms/SidebarOpenButton';
 import Categories from '../molecules/Categories';
+import Map from '../molecules/Map';
 import SideBar from '../molecules/SideBar';
-import Map from './Map';
 
 interface HomeClientProps {
   dehydratedState: unknown;
@@ -28,7 +28,7 @@ function HomeClientInner() {
   const search = useSearchCourseStore((state) => state.search);
   const category = useCategoryStore((state) => state.selectedCategory);
 
-  const { data, isLoading, isError } = useQuery({
+  const { isLoading, isError } = useQuery({
     queryKey: ['homeData', search, category],
     queryFn: () => getHomeData(search, category),
   });

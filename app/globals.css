@@ -103,6 +103,10 @@
     z-index: 0;
   }
 
+  #courseDetailMap {
+    z-index: 0;
+  }
+
   .noScroll::-webkit-scrollbar {
     background: transparent;
   }

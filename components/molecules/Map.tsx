@@ -98,5 +98,5 @@ export default function Map() {
     };
   }, [router]);
 
-  return <div ref={mapContainerRef} id='map' className='w-full h-full' />;
+  return <div ref={mapContainerRef} id='map' className='w-full h-screen' />;
 }

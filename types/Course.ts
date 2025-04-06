@@ -1,3 +1,4 @@
+import { PlaceDtoWithSequence } from './Place';
 import { UserDto } from './User';
 
 export interface CoursePlaceRequestDto {
@@ -28,4 +29,20 @@ export interface CourseSimpleDto {
   category: string;
   favorite: number;
   createdAt: string;
+}
+
+export interface CourseDetailResponseDto {
+  places: PlaceDtoWithSequence[];
+}
+
+export interface FavoriteRequestDto {
+  courseId: number;
+}
+
+export interface FavoriteResponseDto {
+  message: string;
+}
+
+export interface DeleteCourseResponseDto {
+  message: string;
 }

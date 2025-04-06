@@ -44,7 +44,7 @@ const authOptions: NextAuthOptions = {
           nickname,
           profileImageUrl
         );
-        console.log('🚀 sendKakaoProfile:', result);
+        // console.log('🚀 sendKakaoProfile:', result);
 
         // jwt 콜백에서 user에 값을 담기 위함
         user.backendJwt = result.token;
@@ -73,14 +73,14 @@ const authOptions: NextAuthOptions = {
       if (u?.profileImageUrl) {
         token.profileImageUrl = u.profileImageUrl;
       }
-      console.log('JWT(token): ', token);
+      // console.log('JWT(token): ', token);
       return token;
     },
 
     // 세션 조회 시 호출 useSession 등
     async session({ session, token }) {
-      console.log('session(session): ', session);
-      console.log('session(token): ', token);
+      // console.log('session(session): ', session);
+      // console.log('session(token): ', token);
       session.user = {
         ...session.user,
         backendJwt: token.backendJwt,
@@ -88,7 +88,7 @@ const authOptions: NextAuthOptions = {
         nickname: token.nickname,
         profileImageUrl: token.profileImageUrl,
       };
-      console.log('session(session): ', session);
+      // console.log('session(session): ', session);
       return session;
     },
   },

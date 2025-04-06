@@ -1,11 +1,15 @@
 'use client';
 
+import { kakaoLogin, kakaoLogout } from '@/api/kakao';
 import Header from '@/components/atoms/Header';
 import MenuBox from '@/components/atoms/MenuBox';
 import { useSession } from 'next-auth/react';
 
+import { useRouter } from 'next/navigation';
+
 export default function MenuPage() {
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   if (status === 'loading') {
     // 세션이 로딩되지 않으면 로그인 -> 여러 메뉴로 바뀜
@@ -23,13 +27,18 @@ export default function MenuPage() {
       <div className='w-full max-w-[768px]'>
         {session?.user?.backendJwt ? (
           <>
-            <MenuBox text='내가 등록한 코스' url='course/mycourse' />
-            <MenuBox text='즐겨찾기한 코스' url='course/favorite' />
-            <MenuBox text='로그아웃' url='sign-out' />
-            <MenuBox text='회원탈퇴' url='delete-account' />
+            <MenuBox
+              text='내가 등록한 코스'
+              onClick={() => router.push('course/mycourse')}
+            />
+            <MenuBox
+              text='즐겨찾기한 코스'
+              onClick={() => router.push('course/myfavorite')}
+            />
+            <MenuBox text='로그아웃' onClick={kakaoLogout} />
           </>
         ) : (
-          <MenuBox text='로그인' url='sign-in' />
+          <MenuBox text='로그인' onClick={kakaoLogin} />
         )}
       </div>
     </main>
