@@ -77,3 +77,19 @@ export async function updateCourse(
   );
   return response.data;
 }
+
+export async function getMyFavoriteCourses(): Promise<CourseSimpleDto[]> {
+  const response =
+    await axiosClient.get<CourseSimpleDto[]>('/course/myfavorite');
+
+  return response.data;
+}
+
+export async function unfavoriteCourse(
+  courseId: number
+): Promise<FavoriteResponseDto> {
+  const response = await axiosClient.delete<FavoriteResponseDto>(
+    `/course/favorite/${courseId}`
+  );
+  return response.data;
+}
