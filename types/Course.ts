@@ -1,7 +1,16 @@
-import { PlaceDtoWithSequence } from './Place';
 import { UserDto } from './User';
 
-export interface CoursePlaceRequestDto {
+// export interface CoursePlaceRequestDto {
+//   placeId: string;
+//   name: string;
+//   address: string;
+//   latitude: string;
+//   longitude: string;
+//   placeUrl: string;
+//   sequence: number;
+// }
+
+export interface CoursePlaceDto {
   placeId: string;
   name: string;
   address: string;
@@ -14,10 +23,10 @@ export interface CoursePlaceRequestDto {
 export interface CreateCourseRequestDto {
   title: string;
   category: string;
-  places: CoursePlaceRequestDto[];
+  places: CoursePlaceDto[];
 }
 
-export interface CreateCourseResponse {
+export interface CreateCourseResponseDto {
   courseId: number;
   message: string;
 }
@@ -32,7 +41,7 @@ export interface CourseSimpleDto {
 }
 
 export interface CourseDetailResponseDto {
-  places: PlaceDtoWithSequence[];
+  places: CoursePlaceDto[];
 }
 
 export interface FavoriteRequestDto {

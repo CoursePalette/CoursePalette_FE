@@ -1,6 +1,7 @@
 'use client';
 
-import { PlaceDtoWithSequence } from '@/types/Place';
+// import { PlaceDtoWithSequence } from '@/types/Place';
+import { CoursePlaceDto } from '@/types/Course';
 
 import { useState } from 'react';
 
@@ -8,7 +9,7 @@ import CourseDetailMap from '../molecules/CourseDetailMap';
 import PlaceSlide from '../molecules/PlaceSlide';
 
 interface CourseDetailClientProps {
-  places: PlaceDtoWithSequence[];
+  places: CoursePlaceDto[];
   courseId: number;
 }
 
