@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteCourse } from '@/api/course';
+import { deleteCourse, unfavoriteCourse } from '@/api/course';
 import { useCourseEditStore } from '@/store/course/useCourseEditStore';
 import { CourseSimpleDto } from '@/types/Course';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
@@ -65,6 +65,34 @@ export default function CourseBox({ course }: CourseBoxProps) {
     }
   };
 
+  const deleteFavoriteMutation = useMutation({
+    mutationFn: unfavoriteCourse,
+    onSuccess: (response) => {
+      if (response.message === '코스 즐겨찾기를 해제했습니다.') {
+        Swal.fire(
+          '코스 즐겨찾기 해제 완료',
+          '코스 즐겨찾기를 해제했습니다!',
+          'success'
+        );
+        // 삭제 성공 시 myFavorite 쿼리 무효
+        queryClient.invalidateQueries({ queryKey: ['myFavorite'] });
+      } else {
+        Swal.fire({
+          title: '코스 즐겨찾기 삭제 실패',
+          text: response.message,
+          icon: 'error',
+        });
+      }
+    },
+    onError: () => {
+      Swal.fire({
+        title: '코스 즐겨찾기 삭제 실패',
+        text: '서버 요청 중 오류가 발생했습니다.',
+        icon: 'error',
+      });
+    },
+  });
+
   return (
     <div
       role='button'
@@ -121,6 +149,7 @@ export default function CourseBox({ course }: CourseBoxProps) {
           <DeleteButton
             onClick={(e) => {
               e.stopPropagation();
+              deleteFavoriteMutation.mutate(course.courseId);
             }}
           />
         )

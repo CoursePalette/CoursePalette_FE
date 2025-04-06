@@ -33,7 +33,7 @@ export default function MenuPage() {
             />
             <MenuBox
               text='즐겨찾기한 코스'
-              onClick={() => router.push('course/favorite')}
+              onClick={() => router.push('course/myfavorite')}
             />
             <MenuBox text='로그아웃' onClick={kakaoLogout} />
           </>
