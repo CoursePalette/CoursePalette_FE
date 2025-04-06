@@ -1,7 +1,7 @@
 import { CourseSimpleDto } from './Course';
 import { PlaceDto } from './Place';
 
-export interface HomeResponse {
+export interface HomeResponseDto {
   courses: CourseSimpleDto[];
   places: PlaceDto[];
 }

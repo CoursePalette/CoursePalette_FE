@@ -1,19 +1,19 @@
 import {
+  CourseDetailResponseDto,
   CourseSimpleDto,
   CreateCourseRequestDto,
-  CreateCourseResponse,
+  CreateCourseResponseDto,
   DeleteCourseResponseDto,
   FavoriteRequestDto,
   FavoriteResponseDto,
 } from '@/types/Course';
-import { CourseDetailResponseDto } from '@/types/Course';
 
 import { axiosClient, axiosServer } from '../axiosInstance';
 
 export async function createCourse(
   courseData: CreateCourseRequestDto
-): Promise<CreateCourseResponse> {
-  const response = await axiosClient.post<CreateCourseResponse>(
+): Promise<CreateCourseResponseDto> {
+  const response = await axiosClient.post<CreateCourseResponseDto>(
     '/course',
     courseData
   );
@@ -70,8 +70,8 @@ export async function getCourseEditData(
 export async function updateCourse(
   courseId: number,
   dto: CreateCourseRequestDto
-): Promise<CreateCourseResponse> {
-  const response = await axiosClient.put<CreateCourseResponse>(
+): Promise<CreateCourseResponseDto> {
+  const response = await axiosClient.put<CreateCourseResponseDto>(
     `/course/${courseId}`,
     dto
   );

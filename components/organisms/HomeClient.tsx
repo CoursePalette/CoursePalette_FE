@@ -3,6 +3,7 @@
 import { getHomeData } from '@/api/home';
 import { useCategoryStore } from '@/store/course/useCategoryStore';
 import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
+import { HomeResponseDto } from '@/types/Home';
 import { HydrationBoundary, useQuery } from '@tanstack/react-query';
 
 import CourseCreateButton from '../atoms/CourseCreateButton';
@@ -28,7 +29,7 @@ function HomeClientInner() {
   const search = useSearchCourseStore((state) => state.search);
   const category = useCategoryStore((state) => state.selectedCategory);
 
-  const { isLoading, isError } = useQuery({
+  const { isLoading, isError } = useQuery<HomeResponseDto>({
     queryKey: ['homeData', search, category],
     queryFn: () => getHomeData(search, category),
   });

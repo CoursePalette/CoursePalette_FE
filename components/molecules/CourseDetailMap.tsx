@@ -1,6 +1,7 @@
 'use client';
 
-import { PlaceDtoWithSequence } from '@/types/Place';
+// import { PlaceDtoWithSequence } from '@/types/Place';
+import { CoursePlaceDto } from '@/types/Course';
 import ReactDOMServer from 'react-dom/server';
 
 import { useEffect, useRef } from 'react';
@@ -17,7 +18,7 @@ declare global {
 }
 
 interface CourseDetailMapProps {
-  places: PlaceDtoWithSequence[];
+  places: CoursePlaceDto[];
   currentIndex: number;
 }
 
