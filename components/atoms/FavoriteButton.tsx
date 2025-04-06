@@ -1,7 +1,12 @@
 'use client';
 
 import { registCourseFavorite } from '@/api/course';
+import { useSession } from 'next-auth/react';
 import Swal from 'sweetalert2';
+
+import { useRouter } from 'next/navigation';
+
+import { checkLogin } from '@/lib/checkLogin';
 
 import { Button } from '../ui/button';
 
@@ -10,7 +15,15 @@ interface FavoriteButtonProps {
 }
 
 export default function FavoriteButton({ courseId }: FavoriteButtonProps) {
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
   const handleFavorite = async () => {
+    if (status === 'loading') return;
+    if (!session?.user?.backendJwt) {
+      checkLogin(router);
+    }
+
     const response = await registCourseFavorite({ courseId });
     if (response.message === '코스를 즐겨찾기 했습니다!') {
       Swal.fire({
