@@ -102,6 +102,7 @@ export default function Map() {
 }
 
 // 커스텀 핀 HTML을 직접 반환하는 헬퍼 함수
+// 기존에는 SSR로 렌더링 했는데 클라이언트 컴포넌트다 보니 CSR 이 더 효과적이다
 function getPinHtml(
   title: string,
   address: string,

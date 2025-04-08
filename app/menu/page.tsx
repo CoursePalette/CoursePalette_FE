@@ -2,6 +2,7 @@
 
 import { kakaoLogin, kakaoLogout } from '@/api/kakao';
 import Header from '@/components/atoms/Header';
+import Loading from '@/components/atoms/Loading';
 import MenuBox from '@/components/atoms/MenuBox';
 import { useSession } from 'next-auth/react';
 
@@ -12,10 +13,11 @@ export default function MenuPage() {
   const router = useRouter();
 
   if (status === 'loading') {
-    // 세션이 로딩되지 않으면 로그인 -> 여러 메뉴로 바뀜
-    // 방지하기 위해 우선 null
-    // 기회 있으면 로딩스피너 처리
-    return null;
+    return (
+      <div className='w-full h-full flex justify-center items-center '>
+        <Loading />
+      </div>
+    );
   }
 
   return (

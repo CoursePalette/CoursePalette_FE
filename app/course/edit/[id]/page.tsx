@@ -3,6 +3,7 @@
 import { getCourseEditData, updateCourse } from '@/api/course';
 import CancelButton from '@/components/atoms/CancelButton';
 import CategorySelect from '@/components/atoms/CategorySelect';
+import Loading from '@/components/atoms/Loading';
 import PlaceSelect from '@/components/atoms/PlaceSelect';
 import RegisterButton from '@/components/atoms/RegisterButton';
 import TextInput from '@/components/atoms/TextInput';
@@ -144,7 +145,12 @@ export default function CourseEditPage({ params }: { params: { id: string } }) {
     }
   };
 
-  if (loading) return <div>로딩중....</div>;
+  if (loading)
+    return (
+      <div className='w-full h-full flex justify-center items-center '>
+        <Loading />
+      </div>
+    );
 
   const handleCancel = () => {
     router.back();
@@ -153,7 +159,7 @@ export default function CourseEditPage({ params }: { params: { id: string } }) {
   return (
     <form className='w-full h-full flex flex-col items-center pt-[100px] px-[20px] pb-[20px]'>
       <h1 className='text-[24px] font-semibold'>코스 수정 페이지</h1>
-      <fieldset className='w-[365px] md:w-[700px]  flex flex-col mt-[20px]'>
+      <fieldset className='w-[365px] md:w-[700px] flex flex-col mt-[20px]'>
         <TextInput
           infoText={'코스 제목'}
           placeholder={'ex) 혼자서 성수동 즐기는 코스'}
@@ -174,7 +180,7 @@ export default function CourseEditPage({ params }: { params: { id: string } }) {
           removePlace={removePlace}
         />
 
-        <div className='mt-[50px] w-full flex justify-between'>
+        <div className='mt-[50px] w-full flex justify-between pb-[20px]'>
           <CancelButton onClick={handleCancel} />
           <RegisterButton onClick={handleUpdate} disabled={!canRegister} />
         </div>
