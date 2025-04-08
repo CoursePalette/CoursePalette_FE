@@ -31,14 +31,15 @@ export default function Header() {
   return (
     <header className='w-full h-[50px] bg-white/80 backdrop-blur-lg border-b border-black flex items-center px-[20px] justify-between fixed top-0 left-0'>
       <div className='flex gap-[20px] items-center'>
-        <TiArrowLeft
-          className='cursor-pointer'
-          size={35}
+        <button
+          type='button'
           onClick={handleBack}
-          role='button'
-          tabIndex={0}
           aria-label='뒤로가기'
-        />
+          className='inline-flex items-center justify-center'
+        >
+          <TiArrowLeft size={35} aria-hidden='true' focusable='false' />
+        </button>
+
         <button
           className='cursor-pointer font-semibold text-[16px]'
           onClick={handleHome}

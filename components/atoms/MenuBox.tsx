@@ -6,23 +6,15 @@ export interface MenuBoxProps {
 }
 
 export default function MenuBox({ text, onClick }: MenuBoxProps) {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter') {
-      onClick();
-    }
-  };
-
   return (
-    <div
+    <button
       onClick={onClick}
-      onKeyDown={handleKeyDown}
-      role='button'
-      tabIndex={0}
+      type='button'
       className='w-full h-[100px] py-[30px] px-[20px] cursor-pointer bg-white text-black text-[32px] font-semibold
         border-b border-black
       hover:bg-black hover:text-white'
     >
-      <span>{text}</span>
-    </div>
+      {text}
+    </button>
   );
 }

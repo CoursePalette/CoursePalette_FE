@@ -7,6 +7,7 @@ import { HomeResponseDto } from '@/types/Home';
 import { HydrationBoundary, useQuery } from '@tanstack/react-query';
 
 import CourseCreateButton from '../atoms/CourseCreateButton';
+import Loading from '../atoms/Loading';
 import ModalHeader from '../atoms/ModalHeader';
 import SidebarOpenButton from '../atoms/SidebarOpenButton';
 import Categories from '../molecules/Categories';
@@ -34,7 +35,13 @@ function HomeClientInner() {
     queryFn: () => getHomeData(search, category),
   });
 
-  if (isLoading) return <div>로딩중....</div>;
+  if (isLoading) {
+    return (
+      <div className='w-full h-full flex justify-center items-center'>
+        <Loading />
+      </div>
+    );
+  }
   if (isError) return <div>에러가 발생했습니다.</div>;
 
   return (
