@@ -43,3 +43,7 @@ next-env.d.ts
 
 # 컴포넌트 test
 app/compTest
+
+
+# jest 결과 파일
+test-results

@@ -22,6 +22,7 @@ export default function FavoriteButton({ courseId }: FavoriteButtonProps) {
     if (status === 'loading') return;
     if (!session?.user?.backendJwt) {
       checkLogin(router);
+      return;
     }
 
     const response = await registCourseFavorite({ courseId });

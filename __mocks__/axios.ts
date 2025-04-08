@@ -22,7 +22,7 @@ const axiosMock = {
   post: instance.post,
   get: instance.get,
   delete: instance.delete,
-  push: instance.put,
+  put: instance.put,
 };
 
 export default axiosMock;
