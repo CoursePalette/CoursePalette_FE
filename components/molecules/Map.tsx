@@ -4,7 +4,8 @@ import { getHomeData } from '@/api/home';
 import { useCategoryStore } from '@/store/course/useCategoryStore';
 import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
 import { useQuery } from '@tanstack/react-query';
-import ReactDOMServer from 'react-dom/server';
+
+// import ReactDOMServer from 'react-dom/server';
 
 import { useRouter } from 'next/navigation';
 
@@ -12,7 +13,7 @@ import { useEffect, useRef } from 'react';
 
 import { truncateText } from '@/lib/utils';
 
-import CustomPin from '../atoms/CustomPin';
+// import CustomPin from '../atoms/CustomPin';
 
 // 지도는 CSR
 declare global {
