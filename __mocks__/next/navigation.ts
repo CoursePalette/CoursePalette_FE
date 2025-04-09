@@ -9,3 +9,7 @@ export const useRouter = () => {
     // 여기에 필요한 라우터 기능들 계속 mock
   };
 };
+
+export const usePathname = () => {
+  return '/mock-story-path';
+};
