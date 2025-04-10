@@ -2,6 +2,7 @@
 
 import { getMyFavoriteCourses } from '@/api/course';
 import EditToggleButton from '@/components/atoms/EditToggleButton';
+import Loading from '@/components/atoms/Loading';
 import CourseBox from '@/components/molecules/CourseBox';
 import { useCourseEditStore } from '@/store/course/useCourseEditStore';
 import { useQuery } from '@tanstack/react-query';
@@ -41,8 +42,12 @@ export default function MyFavoritePage() {
     };
   }, [setIsEdit]);
 
-  // 페이지 따로 만들자.. TODO
-  if (isLoading) return <div>로딩중입니다..</div>;
+  if (isLoading)
+    return (
+      <div className='w-full h-full flex justify-center items-center '>
+        <Loading />
+      </div>
+    );
   if (isError) return <div>에러 발생</div>;
 
   return (

@@ -5,8 +5,6 @@ import { motion } from 'motion/react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
-import { Button } from '../ui/button';
-
 const SIDEBAR_WIDTH = 375;
 
 export default function SidebarOpenButton() {

@@ -8,7 +8,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { PlaceDtoWithSequence } from '@/types/Place';
+import { CoursePlaceDto } from '@/types/Course';
+
+// import { PlaceDtoWithSequence } from '@/types/Place';
 
 import { useEffect, useState } from 'react';
 
@@ -17,7 +19,7 @@ import FavoriteButton from '../atoms/FavoriteButton';
 import PlaceDetailButton from '../atoms/PlaceDetailButton';
 
 interface PlaceSlideProps {
-  places: PlaceDtoWithSequence[];
+  places: CoursePlaceDto[];
   setCurrentSlide: (index: number) => void;
   courseId: number;
 }
