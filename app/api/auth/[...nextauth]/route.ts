@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { sendKakaoProfile } from '@/api/kakao';
+// import { sendKakaoProfile } from '@/api/kakao';
 import NextAuth, { Account, NextAuthOptions, Profile, User } from 'next-auth';
 import KakaoProvider from 'next-auth/providers/kakao';
 
