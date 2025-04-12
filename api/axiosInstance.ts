@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { getSession } from 'next-auth/react';
 
 const axiosClient: AxiosInstance = axios.create({
-  baseURL: process.env.API_BASE_URL || 'http://localhost:8080',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -26,7 +26,7 @@ axiosClient.interceptors.request.use(
 );
 
 const axiosServer: AxiosInstance = axios.create({
-  baseURL: process.env.API_BASE_URL || 'http://localhost:8080',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8080',
   headers: {
     'Content-Type': 'application/json',
   },
