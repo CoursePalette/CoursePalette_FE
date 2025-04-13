@@ -3,6 +3,8 @@ import { sendKakaoProfile } from '@/api/kakao';
 import NextAuth, { Account, NextAuthOptions, Profile, User } from 'next-auth';
 import KakaoProvider from 'next-auth/providers/kakao';
 
+console.log('>>> [route.ts] Top level: Parsing file <<<'); // 파일 파싱 확인
+
 interface KakaoProfile extends Profile {
   id?: number;
   properties?: {
@@ -20,6 +22,26 @@ interface SignInParams {
   credentials?: Record<string, any>;
 }
 
+console.log(
+  '>>> [route.ts] KAKAO_CLIENT_ID:',
+  process.env.KAKAO_CLIENT_ID ? 'Exists' : 'MISSING!'
+);
+console.log(
+  '>>> [route.ts] KAKAO_CLIENT_SECRET:',
+  process.env.KAKAO_CLIENT_SECRET ? 'Exists' : 'MISSING!'
+);
+console.log(
+  '>>> [route.ts] NEXTAUTH_SECRET:',
+  process.env.NEXTAUTH_SECRET ? 'Exists' : 'MISSING!'
+);
+console.log(
+  '>>> [route.ts] API_BASE_URL (for axiosServer):',
+  process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL
+); //
+console.log(
+  '>>> [route.ts] NEXTAUTH_URL',
+  process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL
+); //
 const authOptions: NextAuthOptions = {
   providers: [
     KakaoProvider({
@@ -27,25 +49,36 @@ const authOptions: NextAuthOptions = {
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn({ user, profile }: SignInParams) {
+      console.log('>>> [route.ts] signIn callback: ENTERED <<<'); // signIn 진입 확인
       if (!profile) {
+        console.error(
+          '>>> [route.ts] signIn callback: Profile is missing! <<<'
+        );
         console.log('🚀 profile 없음 :', profile);
         return false;
       }
-
+      console.log('>>> [route.ts] signIn callback: Profile received:', profile);
       const kakaoId = profile.id as number;
       const nickname = profile.properties?.nickname ?? '';
       const profileImageUrl = profile.properties?.profile_image ?? '';
 
       try {
+        console.log(
+          '>>> [route.ts] signIn callback: Attempting sendKakaoProfile call <<<'
+        );
         const result = await sendKakaoProfile(
           kakaoId,
           nickname,
           profileImageUrl
         );
         // console.log('🚀 sendKakaoProfile:', result);
-
+        console.log(
+          '>>> [route.ts] signIn callback: sendKakaoProfile SUCCESS <<<',
+          result
+        );
         // jwt 콜백에서 user에 값을 담기 위함
         user.backendJwt = result.token;
         user.userId = result.userId;
@@ -59,6 +92,7 @@ const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
+      console.log('>>> [route.ts] jwt callback: ENTERED <<<');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const u = user as any;
       if (u?.backendJwt) {
@@ -79,6 +113,7 @@ const authOptions: NextAuthOptions = {
 
     // 세션 조회 시 호출 useSession 등
     async session({ session, token }) {
+      console.log('>>> [route.ts] session callback: ENTERED <<<');
       // console.log('session(session): ', session);
       // console.log('session(token): ', token);
       session.user = {
@@ -104,6 +139,6 @@ const authOptions: NextAuthOptions = {
     updateAge: 60 * 60, // 세션 갱신 주기 (1시간)
   },
 };
-
+console.log('>>> [route.ts] Attempting to initialize NextAuth handler <<<');
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

@@ -25,7 +25,7 @@ export const sendKakaoProfile = async (
 };
 
 export const kakaoLogin = async () => {
-  console.log('@@@test 코드@@@');
+  console.log('@@@test 코드-kakaoLogin@@@');
   await signIn('kakao');
 };
 
