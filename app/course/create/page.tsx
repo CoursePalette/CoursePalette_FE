@@ -129,7 +129,7 @@ export default function CourseCreatePage() {
   );
 
   return (
-    <form className='w-full h-full flex flex-col items-center justify-center pt-[100px] px-[20px] pb-[20px]'>
+    <form className='w-full h-full flex flex-col items-center  pt-[100px] px-[20px] pb-[20px]'>
       <h1 className='text-[24px] font-semibold'>코스 등록 페이지</h1>
       <fieldset className='w-[365px] md:w-[700px]  flex flex-col mt-[20px]'>
         <TextInput
