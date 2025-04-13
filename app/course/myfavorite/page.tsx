@@ -1,6 +1,6 @@
 'use client';
 
-import { getMyFavoriteCourses } from '@/api/course';
+import { getMyFavoriteCourses } from '@/apis/course';
 import EditToggleButton from '@/components/atoms/EditToggleButton';
 import Loading from '@/components/atoms/Loading';
 import CourseBox from '@/components/molecules/CourseBox';

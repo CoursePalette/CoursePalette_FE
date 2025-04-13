@@ -1,6 +1,6 @@
 'use client';
 
-import { kakaoLogin, kakaoLogout } from '@/api/kakao';
+import { kakaoLogin, kakaoLogout } from '@/apis/kakao';
 import Header from '@/components/atoms/Header';
 import Loading from '@/components/atoms/Loading';
 import MenuBox from '@/components/atoms/MenuBox';

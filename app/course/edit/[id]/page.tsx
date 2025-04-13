@@ -1,6 +1,6 @@
 'use client';
 
-import { getCourseEditData, updateCourse } from '@/api/course';
+import { getCourseEditData, updateCourse } from '@/apis/course';
 import CancelButton from '@/components/atoms/CancelButton';
 import CategorySelect from '@/components/atoms/CategorySelect';
 import Loading from '@/components/atoms/Loading';

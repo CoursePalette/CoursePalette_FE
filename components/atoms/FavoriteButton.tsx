@@ -1,6 +1,6 @@
 'use client';
 
-import { registCourseFavorite } from '@/api/course';
+import { registCourseFavorite } from '@/apis/course';
 import { useSession } from 'next-auth/react';
 import Swal from 'sweetalert2';
 

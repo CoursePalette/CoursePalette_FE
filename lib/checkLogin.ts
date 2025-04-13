@@ -1,4 +1,4 @@
-import { kakaoLogin } from '@/api/kakao';
+import { kakaoLogin } from '@/apis/kakao';
 import Swal from 'sweetalert2';
 
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';

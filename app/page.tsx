@@ -1,4 +1,4 @@
-import { getHomeData } from '@/api/home';
+import { getHomeData } from '@/apis/home';
 import HomeClient from '@/components/organisms/HomeClient';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 

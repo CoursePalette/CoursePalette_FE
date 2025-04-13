@@ -1,4 +1,4 @@
-import * as courseApi from '@/api/course';
+import * as courseApi from '@/apis/course';
 import CourseCreatePage from '@/app/course/create/page';
 import { useCreateCourseStore } from '@/store/course/useCreateCourseStore';
 import { Place } from '@/types/Place';

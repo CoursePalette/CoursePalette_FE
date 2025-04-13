@@ -1,4 +1,4 @@
-import { kakaoLogin, kakaoLogout, sendKakaoProfile } from '@/api/kakao';
+import { kakaoLogin, kakaoLogout, sendKakaoProfile } from '@/apis/kakao';
 import axios from 'axios';
 import { signIn, signOut } from 'next-auth/react';
 

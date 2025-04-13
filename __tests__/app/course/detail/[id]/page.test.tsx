@@ -1,4 +1,4 @@
-import * as courseApi from '@/api/course';
+import * as courseApi from '@/apis/course';
 import CourseDetailClient from '@/components/organisms/CourseDetailClient';
 import { CoursePlaceDto } from '@/types/Course';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

@@ -8,7 +8,7 @@ import {
   registCourseFavorite,
   unfavoriteCourse,
   updateCourse,
-} from '@/api/course';
+} from '@/apis/course';
 import { CreateCourseRequestDto } from '@/types/Course';
 import axios from 'axios';
 

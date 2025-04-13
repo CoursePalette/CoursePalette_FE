@@ -1,6 +1,6 @@
 'use client';
 
-import { createCourse } from '@/api/course';
+import { createCourse } from '@/apis/course';
 import CancelButton from '@/components/atoms/CancelButton';
 import CategorySelect from '@/components/atoms/CategorySelect';
 import PlaceSelect from '@/components/atoms/PlaceSelect';

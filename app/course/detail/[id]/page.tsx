@@ -1,4 +1,4 @@
-import { getCourseDetail } from '@/api/course';
+import { getCourseDetail } from '@/apis/course';
 import CourseDetailClient from '@/components/organisms/CourseDetailClient';
 
 import { Metadata } from 'next';

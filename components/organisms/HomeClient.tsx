@@ -1,6 +1,6 @@
 'use client';
 
-import { getHomeData } from '@/api/home';
+import { getHomeData } from '@/apis/home';
 import { useCategoryStore } from '@/store/course/useCategoryStore';
 import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
 import { HomeResponseDto } from '@/types/Home';

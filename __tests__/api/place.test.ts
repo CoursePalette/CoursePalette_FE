@@ -1,4 +1,4 @@
-import { getPlaceWithCourses } from '@/api/place';
+import { getPlaceWithCourses } from '@/apis/place';
 import axios from 'axios';
 
 jest.mock('axios');
