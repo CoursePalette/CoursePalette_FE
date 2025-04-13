@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { sendKakaoProfile } from '@/api/kakao';
+import { sendKakaoProfile } from '@/api/kakao';
 import NextAuth, { Account, NextAuthOptions, Profile, User } from 'next-auth';
 import KakaoProvider from 'next-auth/providers/kakao';
 
@@ -29,42 +29,33 @@ const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, profile }: SignInParams) {
-      console.log('>>> KAKAO SIGNIN CALLBACK ENTERED - Vercel <<<'); // 이 로그가 찍히는지 확인!
-      console.log('Profile from Kakao:', profile); // 프로필 정보 확인
-      // 테스트를 위해 임시로 사용자 정보 설정 및 무조건 true 반환
-      user.name = profile?.properties?.nickname ?? 'Test User from Callback';
-      user.email = user.email ?? 'test@example.com'; // 이메일 없으면 임시 설정
-      user.image = profile?.properties?.profile_image;
+      if (!profile) {
+        console.log('🚀 profile 없음 :', profile);
+        return false;
+      }
 
-      return true; // 무조건 통과시켜서 콜백 함수 자체 호출 여부 확인
+      const kakaoId = profile.id as number;
+      const nickname = profile.properties?.nickname ?? '';
+      const profileImageUrl = profile.properties?.profile_image ?? '';
 
-      // if (!profile) {
-      //   console.log('🚀 profile 없음 :', profile);
-      //   return false;
-      // }
+      try {
+        const result = await sendKakaoProfile(
+          kakaoId,
+          nickname,
+          profileImageUrl
+        );
+        // console.log('🚀 sendKakaoProfile:', result);
 
-      // const kakaoId = profile.id as number;
-      // const nickname = profile.properties?.nickname ?? '';
-      // const profileImageUrl = profile.properties?.profile_image ?? '';
-
-      // try {
-      //   const result = await sendKakaoProfile(
-      //     kakaoId,
-      //     nickname,
-      //     profileImageUrl
-      //   );
-      //   // console.log('🚀 sendKakaoProfile:', result);
-
-      //   // jwt 콜백에서 user에 값을 담기 위함
-      //   user.backendJwt = result.token;
-      //   user.userId = result.userId;
-      //   user.nickname = result.nickname;
-      //   user.profileImageUrl = result.profileImageUrl;
-      //   return true;
-      // } catch (error) {
-      //   console.error('에러 Kakao signIn -> Spring Boot:', error);
-      //   return false;
-      // }
+        // jwt 콜백에서 user에 값을 담기 위함
+        user.backendJwt = result.token;
+        user.userId = result.userId;
+        user.nickname = result.nickname;
+        user.profileImageUrl = result.profileImageUrl;
+        return true;
+      } catch (error) {
+        console.error('에러 Kakao signIn -> Spring Boot:', error);
+        return false;
+      }
     },
 
     async jwt({ token, user }) {
