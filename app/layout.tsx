@@ -17,6 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log('서버 테스트용');
   return (
     <html lang='ko'>
       <head>
