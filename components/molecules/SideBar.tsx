@@ -8,8 +8,6 @@ import { useQuery } from '@tanstack/react-query';
 import { motion } from 'motion/react';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
-import { useEffect } from 'react';
-
 import CourseBox from './CourseBox';
 
 const SIDEBAR_WIDTH = 375;
@@ -26,10 +24,6 @@ export default function SideBar() {
   });
 
   const courses = data?.courses || [];
-
-  useEffect(() => {
-    console.log('courses : ', courses);
-  }, [courses]);
 
   return (
     <motion.aside

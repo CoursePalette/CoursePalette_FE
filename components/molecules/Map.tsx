@@ -36,10 +36,6 @@ export default function Map() {
   const places = data?.places || [];
 
   useEffect(() => {
-    console.log('places :', places);
-  }, [places]);
-
-  useEffect(() => {
     // 스크립트가 로드 된 후 실행하자
     if (!window.kakao || !window.kakao.maps) {
       return;
