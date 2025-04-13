@@ -57,6 +57,11 @@ export default function MyCoursePage() {
       <div className='w-full max-w-[768px] px-[20px] flex justify-end mt-[20px]'>
         <EditToggleButton />
       </div>
+      {courses?.length === 0 && (
+        <p className='w-full text-center mt-[100px] text-[20px] text-[#0064FF] font-semibold'>
+          등록한 코스가 없습니다.
+        </p>
+      )}
       <section className='grid w-full max-w-[768px] grid-cols-1 md:grid-cols-2 justify-items-center gap-[20px] mt-[20px]'>
         {courses?.map((course) => (
           <CourseBox key={course.courseId} course={course} />
