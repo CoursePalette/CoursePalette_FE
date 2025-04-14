@@ -185,14 +185,13 @@ export default function MypagePage() {
   ]);
 
   const canRegister = useCallback(() => {
-    if (
-      !nickname.trim() &&
-      nickname.trim().length < 1 &&
-      nickname.trim().length > 10 &&
-      nickname !== originalNickname
-    )
+    const trimmed = nickname.trim();
+    if (trimmed === '' || trimmed.length > 10) {
       return false;
-    if (!selectedFile) return false;
+    }
+    if (nickname === originalNickname && !selectedFile) {
+      return false;
+    }
     return true;
   }, [nickname, originalNickname, selectedFile]);
 

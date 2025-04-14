@@ -28,7 +28,7 @@ jest.mock('next/navigation', () => ({
 }));
 
 // @/api/kakao 모킹
-jest.mock('@/api/kakao', () => ({
+jest.mock('@/apis/kakao', () => ({
   kakaoLogin: jest.fn(),
   kakaoLogout: jest.fn(),
 }));

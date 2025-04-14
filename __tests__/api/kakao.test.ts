@@ -31,7 +31,7 @@ describe('kakao Api', () => {
 
   it('kakaoLogin signIn 호출', async () => {
     await kakaoLogin();
-    expect(signIn).toHaveBeenCalledWith('kakao');
+    expect(signIn).toHaveBeenCalledWith('kakao', { callbackUrl: '/' });
   });
 
   it('kakaoLogout은 signOut을 callbackUrl과 함께 호출', async () => {
