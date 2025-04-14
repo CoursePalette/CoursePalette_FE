@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { axiosClient } from '@/api/axiosInstance';
+import { axiosClient } from '@/apis/axiosInstance';
 import { getSession } from 'next-auth/react';
 
 // next-auth/react 모듈 전체를 mock 처리 -> 실제 api 호출 없이 가짜 세션 데이터로 테스트

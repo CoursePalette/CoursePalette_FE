@@ -1,4 +1,4 @@
-import { getPlaceWithCourses } from '@/api/place';
+import { getPlaceWithCourses } from '@/apis/place';
 import PlaceDetailButton from '@/components/atoms/PlaceDetailButton';
 import CourseBox from '@/components/molecules/CourseBox';
 

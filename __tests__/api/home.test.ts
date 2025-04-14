@@ -1,4 +1,4 @@
-import { getHomeData } from '@/api/home';
+import { getHomeData } from '@/apis/home';
 import axios from 'axios';
 
 jest.mock('axios');

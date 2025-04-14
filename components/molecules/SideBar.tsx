@@ -1,14 +1,12 @@
 'use client';
 
-import { getHomeData } from '@/api/home';
+import { getHomeData } from '@/apis/home';
 import { useCategoryStore } from '@/store/course/useCategoryStore';
 import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
 import { useSidebarStore } from '@/store/sidebar/useSidebarStore';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'motion/react';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
-
-import { useEffect } from 'react';
 
 import CourseBox from './CourseBox';
 
@@ -26,10 +24,6 @@ export default function SideBar() {
   });
 
   const courses = data?.courses || [];
-
-  useEffect(() => {
-    console.log('courses : ', courses);
-  }, [courses]);
 
   return (
     <motion.aside

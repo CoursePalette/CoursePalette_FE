@@ -1,6 +1,6 @@
 'use client';
 
-import { kakaoLogin, kakaoLogout } from '@/api/kakao';
+import { kakaoLogin, kakaoLogout } from '@/apis/kakao';
 import Header from '@/components/atoms/Header';
 import Loading from '@/components/atoms/Loading';
 import MenuBox from '@/components/atoms/MenuBox';
@@ -37,6 +37,7 @@ export default function MenuPage() {
               text='즐겨찾기한 코스'
               onClick={() => router.push('course/myfavorite')}
             />
+            <MenuBox text='마이페이지' onClick={() => router.push('mypage')} />
             <MenuBox text='로그아웃' onClick={kakaoLogout} />
           </>
         ) : (

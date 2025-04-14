@@ -1,4 +1,4 @@
-import * as placeApi from '@/api/place';
+import * as placeApi from '@/apis/place';
 import PlacePage from '@/app/place/[id]/page';
 import { CourseSimpleDto } from '@/types/Course';
 import { PlaceWithCoursesResponseDto } from '@/types/Place';

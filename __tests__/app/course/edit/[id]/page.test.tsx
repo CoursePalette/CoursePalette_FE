@@ -1,4 +1,4 @@
-import * as courseApi from '@/api/course';
+import * as courseApi from '@/apis/course';
 import CourseEditPage from '@/app/course/edit/[id]/page';
 import { useCreateCourseStore } from '@/store/course/useCreateCourseStore';
 import { CreateCourseRequestDto } from '@/types/Course';

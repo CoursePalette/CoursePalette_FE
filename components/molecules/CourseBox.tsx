@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteCourse, unfavoriteCourse } from '@/api/course';
+import { deleteCourse, unfavoriteCourse } from '@/apis/course';
 import { useCourseEditStore } from '@/store/course/useCourseEditStore';
 import { CourseSimpleDto } from '@/types/Course';
 import { useMutation, useQueryClient } from '@tanstack/react-query';

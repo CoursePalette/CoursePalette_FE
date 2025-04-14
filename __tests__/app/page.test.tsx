@@ -1,4 +1,4 @@
-import * as homeApi from '@/api/home';
+import * as homeApi from '@/apis/home';
 import Home from '@/app/page';
 // Server Component 가져오기
 import HomeClient from '@/components/organisms/HomeClient';

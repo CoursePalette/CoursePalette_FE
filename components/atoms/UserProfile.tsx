@@ -18,6 +18,7 @@ export default function UserProfile({
         height={30}
         className='rounded-[50px]'
         aria-label='유저 프로필 사진'
+        unoptimized
       />
       <span className='text-[14px] font-medium' aria-label='유저 닉네임'>
         {nickname}

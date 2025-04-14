@@ -1,4 +1,4 @@
-import * as kakaoApi from '@/api/kakao';
+import * as kakaoApi from '@/apis/kakao';
 import Providers from '@/app/Providers';
 import MenuPage from '@/app/menu/page';
 import { render, screen, waitFor } from '@testing-library/react';

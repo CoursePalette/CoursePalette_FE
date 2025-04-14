@@ -1,6 +1,6 @@
 'use client';
 
-import { getHomeData } from '@/api/home';
+import { getHomeData } from '@/apis/home';
 import { useCategoryStore } from '@/store/course/useCategoryStore';
 import { useSearchCourseStore } from '@/store/course/useSearchCourseStore';
 import { useQuery } from '@tanstack/react-query';
@@ -34,10 +34,6 @@ export default function Map() {
   });
 
   const places = data?.places || [];
-
-  useEffect(() => {
-    console.log('places :', places);
-  }, [places]);
 
   useEffect(() => {
     // 스크립트가 로드 된 후 실행하자
@@ -124,7 +120,7 @@ function getPinHtml(
           ${truncateText(address)}
         </p>
       </div>
-      <img src="/images/pin.png" alt="map pin" style="width: 30px; height: 40px;" />
+      <img src="/images/pin.png" alt="map pin" style="width: 25px; height: 35px;" />
     </div>
   `;
 }
