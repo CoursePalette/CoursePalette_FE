@@ -54,7 +54,7 @@ export default function InfoModal({ onClose }: InfoModal) {
       image: '/images/info7.png',
     },
     {
-      text: `코스팔레트의 주요 기능은 로그인이 필요해요! \n로그인 후 프로필 사진과 닉네임을 \n자유롭게 설정할 수 있어요.`,
+      text: `코스팔레트의 주요 기능은 로그인이 필요해요! \n프로필 사진과 닉네임은 자유롭게 변경하세요!`,
       image: '/images/info8.png',
     },
   ];
