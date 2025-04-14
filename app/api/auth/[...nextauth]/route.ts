@@ -58,7 +58,7 @@ const authOptions: NextAuthOptions = {
       }
     },
 
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session: sessionFromTrigger }) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const u = user as any;
       if (u?.backendJwt) {
@@ -74,6 +74,16 @@ const authOptions: NextAuthOptions = {
         token.profileImageUrl = u.profileImageUrl;
       }
       // console.log('JWT(token): ', token);
+
+      if (trigger === 'update' && sessionFromTrigger) {
+        if (sessionFromTrigger.nickname) {
+          token.nickname = sessionFromTrigger.nickname;
+        }
+        if (sessionFromTrigger.profileImageUrl) {
+          token.profileImageUrl = sessionFromTrigger.profileImageUrl;
+        }
+      }
+
       return token;
     },
 

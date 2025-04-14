@@ -120,7 +120,7 @@ function getPinHtml(
           ${truncateText(address)}
         </p>
       </div>
-      <img src="/images/pin.png" alt="map pin" style="width: 30px; height: 40px;" />
+      <img src="/images/pin.png" alt="map pin" style="width: 25px; height: 35px;" />
     </div>
   `;
 }

@@ -25,7 +25,9 @@ export const sendKakaoProfile = async (
 };
 
 export const kakaoLogin = async () => {
-  await signIn('kakao');
+  await signIn('kakao', {
+    callbackUrl: '/',
+  });
 };
 
 export const kakaoLogout = async () => {
