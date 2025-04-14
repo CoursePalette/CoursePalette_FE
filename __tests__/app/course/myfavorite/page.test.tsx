@@ -30,7 +30,7 @@ jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
 }));
-jest.mock('@/api/course');
+jest.mock('@/apis/course');
 jest.mock('@/lib/checkLogin');
 
 // CourseBox 컴포넌트 모킹

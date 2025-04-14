@@ -26,7 +26,7 @@ jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
 }));
-jest.mock('@/api/course');
+jest.mock('@/apis/course');
 jest.mock('sweetalert2', () => ({
   fire: jest.fn(),
 }));
