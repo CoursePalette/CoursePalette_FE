@@ -70,7 +70,7 @@ export default function ProfileImageInput({
           alt='유저 프로필 이미지'
           width={150}
           height={150}
-          className='rounded-full  w-[150px] h-[150px]'
+          className='rounded-full leading-[150px] w-[150px] h-[150px]'
           unoptimized
         />
         <div className='absolute bottom-[20px] right-0 w-[30px] h-[30px] border border-white rounded-full bg-black flex items-center justify-center'>
