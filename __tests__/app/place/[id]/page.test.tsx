@@ -8,7 +8,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 // API 모듈 모킹
-jest.mock('@/api/place');
+jest.mock('@/apis/place');
 
 // PlaceDetailButton 컴포넌트 모킹
 jest.mock('@/components/atoms/PlaceDetailButton', () => {

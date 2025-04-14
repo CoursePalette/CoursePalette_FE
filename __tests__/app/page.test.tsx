@@ -40,7 +40,7 @@ jest.mock('next/navigation', () => ({
 }));
 
 // API 호출 모킹
-jest.mock('@/api/home');
+jest.mock('@/apis/home');
 
 // Map 컴포넌트 모킹 (Kakao Maps SDK 회피)
 jest.mock('@/components/molecules/Map', () => {

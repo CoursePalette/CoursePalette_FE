@@ -27,7 +27,7 @@ jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(), // Header 등에서 사용될 수 있으므로 모킹
 }));
-jest.mock('@/api/course');
+jest.mock('@/apis/course');
 jest.mock('sweetalert2', () => ({
   fire: jest.fn(),
 }));
