@@ -23,7 +23,7 @@ export default function InfoModal({ onClose }: InfoModal) {
   const info = [
     {
       text: `지도 기반 사용자 참여형 코스 추천 및 공유 플랫폼 \n코스팔레트에 오신 걸 환영해요!`,
-      image: '/images/logo.png',
+      image: '/images/modalLogo.svg',
     },
     {
       text: `지도에서 유저들이 등록한 \n다양한 장소들을 한눈에 볼 수 있어요!`,
@@ -80,7 +80,7 @@ export default function InfoModal({ onClose }: InfoModal) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className='relative  w-[375px] h-full max-h-[742px] flex flex-col bg-[#0064FF] p-[10px] gap-[20px]'
+        className='relative  w-[375px] h-full rounded-[16px] max-h-[742px] flex flex-col bg-[#0064FF]/50 backdrop-blur-lg p-[10px] gap-[20px]'
       >
         <button aria-label='닫기' className='ml-auto' onClick={onClose}>
           <IoIosClose color='white' size={32} />
@@ -103,7 +103,7 @@ export default function InfoModal({ onClose }: InfoModal) {
                 ))}
                 <Image
                   src={item.image}
-                  className='mt-[20px]'
+                  className={`${index === 0 ? 'mt-[100px]' : ' mt-[20px]'}`}
                   alt={`정보 ${index + 1}`}
                   width={230!}
                   height={500!}
