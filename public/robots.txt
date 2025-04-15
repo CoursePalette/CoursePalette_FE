@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /mypage
+Disallow: /course/create
+Disallow: /course/edit/
+Disallow: /course/mycourse
+Disallow: /course/myfavorite
+
+Sitemap: https://course-palette.com/sitemap.xml
