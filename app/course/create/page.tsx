@@ -134,7 +134,7 @@ export default function CourseCreatePage() {
       <fieldset className='w-[365px] md:w-[700px]  flex flex-col mt-[20px]'>
         <TextInput
           infoText={'코스 제목을 입력해주세요.'}
-          placeholder={'ex) 혼자서 성수동 즐기는 코스'}
+          placeholder={'ex) 양재동 시민의 숲 피크닉 코스'}
           value={title}
           setValue={setTitle}
         />
