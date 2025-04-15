@@ -1,6 +1,11 @@
 'use client';
 
-import PulseLoader from 'react-spinners/PulseLoader';
+// 로딩 컴포넌트가 실제로 렌더될때만 스피너가 로드되어 초기 JS 번들 사이즈 감소
+import dynamic from 'next/dynamic';
+
+const PulseLoader = dynamic(() => import('react-spinners/PulseLoader'), {
+  ssr: false,
+});
 
 export default function Loading() {
   return (

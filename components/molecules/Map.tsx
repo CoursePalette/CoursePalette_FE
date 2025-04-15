@@ -53,27 +53,78 @@ export default function Map() {
 
       const map = new window.kakao.maps.Map(container, options);
 
-      places.forEach((place) => {
-        const pinId = `custom-pin-${place.placeId}`;
+      // MarkerClusterer 생성
+      const clusterer = new window.kakao.maps.MarkerClusterer({
+        map: map,
+        averageCenter: true,
+        minLevel: 6, // 지도의 level 값이 6 이상일 때 클러스터링 활성화
+        calculator: [10, 50, 100], // 클러스터 그룹 기준
+        styles: [
+          {
+            width: '30px',
+            height: '30px',
+            background: 'rgba(0, 100, 255, 0.6)',
+            borderRadius: '15px',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            lineHeight: '31px',
+          },
+          {
+            width: '40px',
+            height: '40px',
+            background: 'rgba(0, 100, 255, 0.7)',
+            borderRadius: '20px',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            lineHeight: '41px',
+          },
+          {
+            width: '50px',
+            height: '50px',
+            background: 'rgba(0, 100, 255, 0.8)',
+            borderRadius: '25px',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            lineHeight: '51px',
+          },
+          {
+            width: '60px',
+            height: '60px',
+            background: '#0064FF',
+            borderRadius: '30px',
+            color: '#FFFFFF',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            lineHeight: '61px',
+          },
+        ],
+      });
 
+      // 커스텀 오버레이 핀들을 생성한다. 이때 map을 null로 지정해서 클러스터러가 관리하게 한다.
+      const overlays = places.map((place) => {
+        const pinId = `custom-pin-${place.placeId}`;
         const content = getPinHtml(
           place.name,
           place.address,
           pinId,
           `/place/${place.placeId}`
         );
-
         const position = new window.kakao.maps.LatLng(
           place.latitude,
           place.longitude
         );
-        new window.kakao.maps.CustomOverlay({
-          map,
+        return new window.kakao.maps.CustomOverlay({
           position,
           content,
-          yAnchor: 1, // 핀의 아래쪽 끝을 기준으로 오버레이 위치 설정 옵션
+          map: null, // 직접 지도에 올리지 않고 클러스터러에 추가
+          yAnchor: 1,
         });
       });
+      // 생성한 커스텀 오버레이들을 클러스터러에 추가
+      clusterer.addMarkers(overlays);
     });
   }, [places]);
 
