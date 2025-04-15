@@ -36,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <head>
+        <link rel='icon' href='/favicon.ico' sizes='any' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         {/* Preconnect 추가: 카카오 API 서버와 미리 연결하여 DNS 조회, TCP 핸드셰이크, TLS 협상 시간 절약 */}
         <link rel='preconnect' href='https://dapi.kakao.com' />
