@@ -7,7 +7,23 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: '코스팔레트',
-  description: '지도 기반 사용자 참여형 코스 추천 및 공유 플랫폼',
+  description:
+    '지도 기반 사용자 참여형 코스 추천 및 공유 플랫폼 코스팔레트입니다.',
+  openGraph: {
+    title: '코스팔레트',
+    description:
+      '지도 기반 사용자 참여형 코스 추천 및 공유 플랫폼 코스팔레트입니다.',
+    images: [
+      {
+        url: 'https://course-palette.com/images/logo.svg',
+        width: 600,
+        height: 700,
+        alt: '코스팔레트 로고',
+      },
+    ],
+    type: 'website',
+    locale: 'ko_KR',
+  },
 };
 
 const KAKAO_MAP_SRC = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_CLIENT_ID}&libraries=services,clusterer&autoload=false`;
