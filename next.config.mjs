@@ -3,13 +3,13 @@ const s3Hostname = process.env.S3_IMAGE_HOSTNAME;
 const remotePatterns = [
   {
     protocol: 'https',
-    hostname: 'k.kakaocdn.net',
+    hostname: '*.kakaocdn.net',
     port: '',
     pathname: '/**',
   },
   {
     protocol: 'http',
-    hostname: 'k.kakaocdn.net',
+    hostname: '*.kakaocdn.net',
     port: '',
     pathname: '/**',
   },
