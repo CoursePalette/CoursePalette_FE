@@ -84,7 +84,7 @@ describe('CourseCreatePage', () => {
 
     expect(screen.getByText('코스 등록 페이지')).toBeInTheDocument();
     expect(
-      screen.getByPlaceholderText('ex) 혼자서 성수동 즐기는 코스')
+      screen.getByPlaceholderText('ex) 양재동 시민의 숲 피크닉 코스')
     ).toBeInTheDocument();
 
     expect(
@@ -102,8 +102,9 @@ describe('CourseCreatePage', () => {
     renderComponent();
     const user = userEvent.setup();
 
-    const titleInput =
-      screen.getByPlaceholderText('ex) 혼자서 성수동 즐기는 코스');
+    const titleInput = screen.getByPlaceholderText(
+      'ex) 양재동 시민의 숲 피크닉 코스'
+    );
     await user.type(titleInput, '나만의 멋진 코스');
     expect(titleInput).toHaveValue('나만의 멋진 코스');
     expect(useCreateCourseStore.getState().title).toBe('나만의 멋진 코스');
@@ -192,8 +193,9 @@ describe('CourseCreatePage', () => {
     renderComponent();
     const user = userEvent.setup();
 
-    const titleInput =
-      screen.getByPlaceholderText('ex) 혼자서 성수동 즐기는 코스');
+    const titleInput = screen.getByPlaceholderText(
+      'ex) 양재동 시민의 숲 피크닉 코스'
+    );
     await user.type(titleInput, '성공 테스트 코스');
 
     const categoryTrigger = screen.getByRole('combobox', {
@@ -267,7 +269,7 @@ describe('CourseCreatePage', () => {
     const user = userEvent.setup();
 
     await user.type(
-      screen.getByPlaceholderText('ex) 혼자서 성수동 즐기는 코스'),
+      screen.getByPlaceholderText('ex) 양재동 시민의 숲 피크닉 코스'),
       '실패 테스트 코스'
     );
 

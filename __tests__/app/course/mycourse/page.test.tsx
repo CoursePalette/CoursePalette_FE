@@ -1,4 +1,4 @@
-import * as courseApi from '@/apis/course';
+// import * as courseApi from '@/apis/course';
 import MyCoursePage from '@/app/course/mycourse/page';
 import { useCourseEditStore } from '@/store/course/useCourseEditStore';
 import { CourseSimpleDto } from '@/types/Course';
@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as nextAuthReact from 'next-auth/react';
 
@@ -55,7 +55,7 @@ jest.mock('@tanstack/react-query', () => ({
 const mockUseSession = nextAuthReact.useSession as jest.Mock;
 const mockUseRouter = navigation.useRouter as jest.Mock;
 const mockUsePathname = navigation.usePathname as jest.Mock;
-const mockGetMyCourses = courseApi.getMyCourses as jest.Mock;
+// const mockGetMyCourses = courseApi.getMyCourses as jest.Mock;
 const mockCheckLogin = checkLoginUtil.checkLogin as jest.Mock;
 const mockUseQuery = useQuery as jest.Mock;
 
@@ -153,14 +153,16 @@ describe('MyCoursePage', () => {
     });
   });
 
-  it('데이터 로딩 중일 때 로딩 컴포넌트를 표시해야 한다', () => {
+  it('데이터 로딩 중일 때 로딩 컴포넌트를 표시해야 한다', async () => {
     mockUseQuery.mockReturnValue({
       data: undefined,
       isLoading: true,
       isError: false,
     });
     renderComponent();
-    expect(screen.getByTestId('loader')).toBeInTheDocument();
+    // expect(screen.getByTestId('loader')).toBeInTheDocument();
+    const loaderElement = await screen.findByTestId('loader');
+    expect(loaderElement).toBeInTheDocument();
     expect(screen.queryByText('내가 등록한 코스')).not.toBeInTheDocument(); // 제목 등은 로딩 중 없어야 함
   });
 

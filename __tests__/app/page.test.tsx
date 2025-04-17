@@ -1,5 +1,5 @@
-import * as homeApi from '@/apis/home';
-import Home from '@/app/page';
+// import * as homeApi from '@/apis/home';
+// import Home from '@/app/page';
 // Server Component 가져오기
 import HomeClient from '@/components/organisms/HomeClient';
 import { useCategoryStore } from '@/store/course/useCategoryStore';
@@ -12,7 +12,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query';
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as nextAuthReact from 'next-auth/react';
 
@@ -60,7 +60,7 @@ jest.mock('@tanstack/react-query', () => ({
 const mockUseSession = nextAuthReact.useSession as jest.Mock;
 const mockUseRouter = navigation.useRouter as jest.Mock;
 const mockUsePathname = navigation.usePathname as jest.Mock;
-const mockGetHomeData = homeApi.getHomeData as jest.Mock;
+// const mockGetHomeData = homeApi.getHomeData as jest.Mock;
 const mockUseQuery = useQuery as jest.Mock; // useQuery 모킹 변수
 
 // 각 테스트 전 스토어 초기화
@@ -208,7 +208,7 @@ describe('HomePage (HomeClient)', () => {
     expect(screen.getByText('테스트 코스 2')).toBeInTheDocument();
   });
 
-  it('데이터 로딩 중일 때 로딩 컴포넌트를 표시해야 한다', () => {
+  it('데이터 로딩 중일 때 로딩 컴포넌트를 표시해야 한다', async () => {
     // useQuery를 로딩 상태로 모킹
     mockUseQuery.mockReturnValue({
       data: undefined,
@@ -220,7 +220,9 @@ describe('HomePage (HomeClient)', () => {
     renderHomeClient();
 
     // 로딩 컴포넌트 확인
-    expect(screen.getByTestId('loader')).toBeInTheDocument();
+    // expect(screen.getByTestId('loader')).toBeInTheDocument();
+    const loaderElement = await screen.findByTestId('loader');
+    expect(loaderElement).toBeInTheDocument();
 
     // 다른 주요 요소들은 없어야 함 (Map, Categories 등)
     expect(screen.queryByTestId('mock-map')).not.toBeInTheDocument();

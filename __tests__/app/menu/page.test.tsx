@@ -1,7 +1,7 @@
 import * as kakaoApi from '@/apis/kakao';
 import Providers from '@/app/Providers';
 import MenuPage from '@/app/menu/page';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as nextAuthReact from 'next-auth/react';
 
@@ -145,7 +145,7 @@ describe('MenuPage', () => {
     expect(mockKakaoLogin).toHaveBeenCalledTimes(1);
   });
 
-  it('세션 로딩 중일 때 로딩 컴포넌트가 표시되어야 한다', () => {
+  it('세션 로딩 중일 때 로딩 컴포넌트가 표시되어야 한다', async () => {
     mockUseSession.mockReturnValue({
       data: null,
       status: 'loading',
@@ -158,7 +158,9 @@ describe('MenuPage', () => {
       </Providers>
     );
 
-    expect(screen.getByTestId('loader')).toBeInTheDocument();
+    // expect(screen.getByTestId('loader')).toBeInTheDocument();
+    const loaderElement = await screen.findByTestId('loader');
+    expect(loaderElement).toBeInTheDocument();
     expect(
       screen.queryByRole('button', { name: /로그인/i })
     ).not.toBeInTheDocument();
